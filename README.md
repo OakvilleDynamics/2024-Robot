@@ -1,4 +1,4 @@
-# Oakville Dynamics FRC Robot Template
+# Oakville Dynamics Cresendo 2024 Robot
 
 A template for FRC robots using GradleRIO and WPILib. Prepackaged with GitHub Actions for CI/CD, Qodana for static analysis, CodeQL for static analysis and security scanning, Spotless for code formatting, and Gradle Validation for validating the Gradle wrapper.
 
@@ -6,23 +6,17 @@ A template for FRC robots using GradleRIO and WPILib. Prepackaged with GitHub Ac
 
 | Action            | Status                                                                                                                                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Build             | [![Build](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/build.yml/badge.svg)](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/build.yml)                                                           |
-| Qodana            | [![Qodana](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/qodana.yml/badge.svg)](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/qodana.yml)                                                        |
-| CodeQL            | [![CodeQL Scanning](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/codeql.yml/badge.svg)](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/codeql.yml)                                               |
-| Spotless          | [![Syntax Check](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/syntax-check.yml/badge.svg)](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/syntax-check.yml)                                      |
-| Gradle Validation | [![Validate Gradle Wrapper](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/gradle-wrapper-validation.yml/badge.svg)](https://github.com/OakvilleDynamics/frc-robot-template/actions/workflows/gradle-wrapper-validation.yml) |
+| Build             | [![Build](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/build.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/build.yml)                                                           |
+| Qodana            | [![Qodana](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/qodana.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/qodana.yml)                                                        |
+| CodeQL            | [![CodeQL Scanning](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/codeql.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/codeql.yml)                                               |
+| Spotless          | [![Syntax Check](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/syntax-check.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/syntax-check.yml)                                      |
+| Gradle Validation | [![Validate Gradle Wrapper](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/gradle-wrapper-validation.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/gradle-wrapper-validation.yml) |
 
 ## How to use
 
-1. Create a template of this repository
-2. Follow GitHub prompts for creating a repository
-3. Clone newly created repository
-4. Open the project in your WPILib Visual Studio Code (VS Code) after cloning
-5. Start hacking away!
-
-> [!NOTE]
->
-> You should also change the `README.md` file to reflect your project for build statuses and other badges, otherwise the CI jobs listed here will point to the template. Include other changes that are made to help users understand your project.
+1. Clone repository
+2. Open the project in your WPILib Visual Studio Code (VS Code) after cloning
+3. Start hacking away!
 
 ## Features
 
