@@ -1,6 +1,6 @@
 # Oakville Dynamics Cresendo 2024 Robot
 
-A template for FRC robots using GradleRIO and WPILib. Prepackaged with GitHub Actions for CI/CD, Qodana for static analysis, CodeQL for static analysis and security scanning, Spotless for code formatting, and Gradle Validation for validating the Gradle wrapper.
+The source code for our 2024 FRC Robot for Cresendo. Prepackaged with GitHub Actions for CI/CD, Qodana for static analysis, CodeQL for static analysis and security scanning, Spotless for code formatting, and Gradle Validation for validating the Gradle wrapper.
 
 ## Build Status
 
