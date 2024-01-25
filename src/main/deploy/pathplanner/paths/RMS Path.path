@@ -1,0 +1,138 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 15.440278093808505,
+        "y": 3.9959636629342707
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 15.431646945614494,
+        "y": 3.998823391888682
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 14.083202162208723,
+        "y": 5.513649748255806
+      },
+      "prevControl": {
+        "x": 14.102344345313691,
+        "y": 5.510352059513438
+      },
+      "nextControl": {
+        "x": 14.064059979103755,
+        "y": 5.516947436998174
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 14.287688556424566,
+        "y": 3.3918268997562304
+      },
+      "prevControl": {
+        "x": 14.990986336495167,
+        "y": 3.4147635977041078
+      },
+      "nextControl": {
+        "x": 13.720172468990771,
+        "y": 3.37331845931053
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 14.083202162208723,
+        "y": 5.513649748255806
+      },
+      "prevControl": {
+        "x": 14.342787980425497,
+        "y": 4.5683557645327095
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": 179.50008506965295,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 2.3000000000000003,
+      "rotationDegrees": 130.17140553231616,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 2.35,
+      "rotationDegrees": -175.73440330027438,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "SUCK",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "SHOOT",
+      "waypointRelativePos": 1.0999999999999999,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "SUCK",
+      "waypointRelativePos": 2.25,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "SHOOT",
+      "waypointRelativePos": 3.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 178.54289122634376,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": null,
+  "useDefaultConstraints": false
+}
