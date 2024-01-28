@@ -10,9 +10,10 @@ import frc.robot.subsystems.Intake;
 
 public class IntakeCommand extends Command {
   private final Intake m_intakeSubsystem;
-  //controller
+  // controller
   // TODO: Change this to the correct controller
   private final Joystick IntakeJoystick = new Joystick(1);
+
   public IntakeCommand(Intake subsystem) {
     m_intakeSubsystem = subsystem;
     addRequirements(m_intakeSubsystem);
@@ -26,7 +27,7 @@ public class IntakeCommand extends Command {
     // TODO: Change this to the correct button
     if (IntakeJoystick.getRawButton(3) == true) {
       m_intakeSubsystem.enableIntake();
-    // TODO: Change this to the correct button
+      // TODO: Change this to the correct button
     } else if (IntakeJoystick.getRawButton(4) == true) {
       m_intakeSubsystem.reverseIntake();
       System.out.println("Intake Moving in Reverse");
