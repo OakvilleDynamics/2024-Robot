@@ -59,10 +59,22 @@ public final class Constants {
     public static final int DRIVER_CONTROLLER = 0;
     public static final int COPILOT_CONTROLLER = 1;
 
+    // TODO: Add button binds for driver controllers
+
     // Joystick Deadband
     public static final double LEFT_X_DEADBAND = 0.01;
     public static final double LEFT_Y_DEADBAND = 0.01;
     public static final double RIGHT_X_DEADBAND = 0.01;
     public static final double TURN_CONSTANT = 6;
+  }
+
+  public static class MechanismConstants {
+
+    // Intake Motors
+    public static final int INTAKE_MOTOR_1 = 20;
+    public static final int INTAKE_MOTOR_2 = 21;
+    public static final boolean INTAKE_MOTOR_1_INVERTED = true;
+    public static final boolean INTAKE_MOTOR_2_INVERTED = false;
+    public static final double INTAKE_MOTOR_SPEED = 1;
   }
 }
