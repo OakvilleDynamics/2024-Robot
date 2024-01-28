@@ -32,6 +32,23 @@ public final class Constants {
     public static final double MAX_ACCELERATION = 2;
   }
 
+  public static final class PneumaticsConstants {
+
+    public static final int PneumaticsMoudleID = 30;
+
+    public static final class DumpConstants {
+
+      // Upy Downy solonoid
+      public static final int OUT = 0;
+      public static final int IN = 1;
+    }
+
+    public static final class ElevatorConstants {
+      // upy downy chain lift thing
+
+    }
+  }
+
   public static final class Drivebase {
 
     // Hold time on motor brakes when disabled
@@ -39,6 +56,8 @@ public final class Constants {
   }
 
   public static class OperatorConstants {
+    public static final int DRIVER_CONTROLLER = 0;
+    public static final int COPILOT_CONTROLLER = 1;
 
     // Joystick Deadband
     public static final double LEFT_X_DEADBAND = 0.01;
