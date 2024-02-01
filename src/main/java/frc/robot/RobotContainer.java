@@ -47,7 +47,7 @@ public class RobotContainer {
   // CommandJoystick driverController   = new
   // CommandJoystick(3);//(OperatorConstants.DRIVER_CONTROLLER_PORT);
   XboxController driverXbox = new XboxController(0);
-  //Connect
+  // Connect
   private final Intake intake = new Intake();
   private final Dump dump = new Dump();
   private final Conveyor conveyor = new Conveyor();
@@ -58,7 +58,7 @@ public class RobotContainer {
     intake.setDefaultCommand(new IntakeCommand(intake));
     dump.setDefaultCommand(new DumpControl(dump));
     conveyor.setDefaultCommand(new ConveyorCommand(conveyor));
-    
+
     // Configure the trigger bindings
     configureBindings();
 
