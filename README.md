@@ -32,5 +32,5 @@ The source code for our 2024 FRC Robot for Cresendo. Prepackaged with GitHub Act
 
 ## Requirements
 
-- WPILib 2024.1.1
+- WPILib 2024.2.1
 - Internet connection (for Gradle to download dependencies)
