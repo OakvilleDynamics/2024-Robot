@@ -34,7 +34,7 @@ public final class Constants {
 
   public static final class PneumaticsConstants {
 
-    public static final int PneumaticsMoudleID = 30;
+    public static final int PneumaticsMoudleID = 6;
 
     public static final class DumpConstants {
 
