@@ -34,13 +34,13 @@ public final class Constants {
 
   public static final class PneumaticsConstants {
 
-    public static final int PneumaticsMoudleID = 6;
+    public static final int PneumaticsMoudleID = 61;
 
     public static final class DumpConstants {
 
       // Upy Downy solonoid
-      public static final int OUT = 0;
-      public static final int IN = 1;
+      public static final int OUT = 4;
+      public static final int IN = 14;
     }
 
     public static final class ElevatorConstants {
@@ -75,13 +75,13 @@ public final class Constants {
     public static final int INTAKE_MOTOR_2 = 52;
     public static final boolean INTAKE_MOTOR_1_INVERTED = true;
     public static final boolean INTAKE_MOTOR_2_INVERTED = false;
-    public static final double INTAKE_MOTOR_SPEED = 1;
+    public static final double INTAKE_MOTOR_SPEED = 0.25;
 
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
     public static final int CONVEYOR_MOTOR_2 = 2;
     public static final boolean CONVEYOR_MOTOR_1_INVERTED = true;
     public static final boolean CONVEYOR_MOTOR_2_INVERTED = false;
-    public static final double CONVEYOR_MOTOR_SPEED = 1;
+    public static final double CONVEYOR_MOTOR_SPEED = 0.25;
   }
 }
