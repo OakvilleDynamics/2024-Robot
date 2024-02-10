@@ -38,7 +38,7 @@ public final class Constants {
 
     public static final class DumpConstants {
 
-      // Upy Downy solonoid
+      // Uppy Downy solonoid
       public static final int OUT = 4;
       public static final int IN = 14;
     }
