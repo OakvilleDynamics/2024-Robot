@@ -12,19 +12,19 @@ import frc.robot.Constants.MechanismConstants;
 public class Intake extends SubsystemBase {
 
   private final CANSparkMax intakeMotor1 =
-      new CANSparkMax(MechanismConstants.INTAKE_MOTOR_1, CANSparkLowLevel.MotorType.kBrushless);
+      new CANSparkMax(MechanismConstants.INTAKE_MOTOR_SUSHI, CANSparkLowLevel.MotorType.kBrushless);
   private final CANSparkMax intakeMotor2 =
-      new CANSparkMax(MechanismConstants.INTAKE_MOTOR_2, CANSparkLowLevel.MotorType.kBrushless);
+      new CANSparkMax(MechanismConstants.INTAKE_MOTOR_FRONT, CANSparkLowLevel.MotorType.kBrushless);
 
   /** Creates a new Intake. */
   public Intake() {
-    intakeMotor1.setInverted(MechanismConstants.INTAKE_MOTOR_1_INVERTED);
-    intakeMotor2.setInverted(MechanismConstants.INTAKE_MOTOR_2_INVERTED);
+    intakeMotor1.setInverted(MechanismConstants.INTAKE_MOTOR_SUSHI_INVERTED);
+    intakeMotor2.setInverted(MechanismConstants.INTAKE_MOTOR_FRONT_INVERTED);
   }
 
   /** Sets the intake motors to 100% power. */
   public void enableIntake() {
-    intakeMotor1.set(MechanismConstants.INTAKE_MOTOR_SPEED);
+    intakeMotor1.set(MechanismConstants.INTAKE_MOTOR_SPEED*0.66);
     intakeMotor2.set(MechanismConstants.INTAKE_MOTOR_SPEED);
   }
 
@@ -36,7 +36,7 @@ public class Intake extends SubsystemBase {
 
   /** Sets the intake motors to -100% power. (Reverse direction) */
   public void reverseIntake() {
-    intakeMotor1.set(-MechanismConstants.INTAKE_MOTOR_SPEED);
+    intakeMotor1.set(-MechanismConstants.INTAKE_MOTOR_SPEED*0.66);
     intakeMotor2.set(-MechanismConstants.INTAKE_MOTOR_SPEED);
   }
 

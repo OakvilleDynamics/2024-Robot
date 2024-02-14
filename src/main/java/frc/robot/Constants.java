@@ -71,17 +71,17 @@ public final class Constants {
   public static class MechanismConstants {
 
     // Intake Motors
-    public static final int INTAKE_MOTOR_1 = 51;
-    public static final int INTAKE_MOTOR_2 = 52;
-    public static final boolean INTAKE_MOTOR_1_INVERTED = true;
-    public static final boolean INTAKE_MOTOR_2_INVERTED = false;
-    public static final double INTAKE_MOTOR_SPEED = 1;
+    public static final int INTAKE_MOTOR_SUSHI = 51;
+    public static final int INTAKE_MOTOR_FRONT = 52;
+    public static final boolean INTAKE_MOTOR_SUSHI_INVERTED = true;
+    public static final boolean INTAKE_MOTOR_FRONT_INVERTED = false;
+    public static final double INTAKE_MOTOR_SPEED = 0.25;
 
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
     public static final int CONVEYOR_MOTOR_2 = 2;
     public static final boolean CONVEYOR_MOTOR_1_INVERTED = true;
     public static final boolean CONVEYOR_MOTOR_2_INVERTED = false;
-    public static final double CONVEYOR_MOTOR_SPEED = .15;
+    public static final double CONVEYOR_MOTOR_SPEED = 0.25;
   }
 }
