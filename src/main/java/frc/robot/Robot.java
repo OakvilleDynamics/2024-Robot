@@ -19,6 +19,7 @@ import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.NT4Publisher;
 import org.littletonrobotics.junction.wpilog.WPILOGReader;
 import org.littletonrobotics.junction.wpilog.WPILOGWriter;
+import org.littletonrobotics.urcl.URCL;
 import swervelib.parser.SwerveParser;
 
 /**
@@ -55,8 +56,13 @@ public class Robot extends LoggedRobot {
 
     if (isReal()) {
       Logger.addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
-      new PowerDistribution(
-          HardwareConstants.REV_PDH_ID, ModuleType.kRev); // Enables power distribution logging
+      PowerDistribution pdh =
+          new PowerDistribution(
+              HardwareConstants.REV_PDH_ID, ModuleType.kRev); // Enables power distribution logging
+      pdh.setSwitchableChannel(true);
+      pdh.close();
+      Logger.registerURCL(URCL.startExternal());
+
     } else {
       setUseTiming(false); // Run as fast as possible
       String logPath =
