@@ -24,7 +24,7 @@ public class Intake extends SubsystemBase {
 
   /** Sets the intake motors to 100% power. */
   public void enableIntake() {
-    intakeMotor1.set(MechanismConstants.INTAKE_MOTOR_SPEED*0.66);
+    intakeMotor1.set(MechanismConstants.INTAKE_MOTOR_SPEED * 0.66);
     intakeMotor2.set(MechanismConstants.INTAKE_MOTOR_SPEED);
   }
 
@@ -36,7 +36,7 @@ public class Intake extends SubsystemBase {
 
   /** Sets the intake motors to -100% power. (Reverse direction) */
   public void reverseIntake() {
-    intakeMotor1.set(-MechanismConstants.INTAKE_MOTOR_SPEED*0.66);
+    intakeMotor1.set(-MechanismConstants.INTAKE_MOTOR_SPEED * 0.66);
     intakeMotor2.set(-MechanismConstants.INTAKE_MOTOR_SPEED);
   }
 
