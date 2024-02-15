@@ -9,6 +9,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -102,7 +103,10 @@ public class RobotContainer {
             () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
             () -> driverXbox.getRawAxis(2));
 
-    drivebase.setDefaultCommand(closedAbsoluteDriveAdv);
+    drivebase.setDefaultCommand(
+        !RobotBase.isSimulation()
+            ? driveFieldOrientedDirectAngle
+            : driveFieldOrientedDirectAngleSim);
   }
 
   /**
@@ -147,3 +151,4 @@ public class RobotContainer {
     drivebase.setMotorBrake(brake);
   }
 }
+
