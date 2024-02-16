@@ -75,7 +75,8 @@ public final class Constants {
     public static final int INTAKE_MOTOR_FRONT = 52;
     public static final boolean INTAKE_MOTOR_SUSHI_INVERTED = true;
     public static final boolean INTAKE_MOTOR_FRONT_INVERTED = false;
-    public static final double INTAKE_MOTOR_SPEED = 0.25;
+    public static final double INTAKE_MOTOR_SPEED_FRONT = 0.25;
+    public static final double INTAKE_MOTOR_SPEED_SUSHI = 0.50;
 
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
