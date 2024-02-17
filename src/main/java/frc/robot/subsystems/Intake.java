@@ -6,6 +6,8 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkBase.IdleMode;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MechanismConstants;
 
@@ -18,8 +20,13 @@ public class Intake extends SubsystemBase {
 
   /** Creates a new Intake. */
   public Intake() {
+    // Set the motors to the correct inversion
     intakeSushi.setInverted(MechanismConstants.INTAKE_MOTOR_SUSHI_INVERTED);
     intakeFront.setInverted(MechanismConstants.INTAKE_MOTOR_FRONT_INVERTED);
+
+    // Set the idle mode to brake
+    intakeSushi.setIdleMode(IdleMode.kBrake);
+    intakeFront.setIdleMode(IdleMode.kBrake);
   }
 
   /** Sets the intake motors to 100% power. */
