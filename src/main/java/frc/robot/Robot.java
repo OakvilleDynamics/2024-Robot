@@ -5,7 +5,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Filesystem;
-import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -16,6 +15,7 @@ import java.io.IOException;
 import org.littletonrobotics.junction.LogFileUtil;
 import org.littletonrobotics.junction.LoggedRobot;
 import org.littletonrobotics.junction.Logger;
+import org.littletonrobotics.junction.inputs.LoggedPowerDistribution;
 import org.littletonrobotics.junction.networktables.NT4Publisher;
 import org.littletonrobotics.junction.wpilog.WPILOGReader;
 import org.littletonrobotics.junction.wpilog.WPILOGWriter;
@@ -51,34 +51,44 @@ public class Robot extends LoggedRobot {
    */
   @Override
   public void robotInit() {
-    // Set up logging
-    Logger.recordMetadata("ProjectName", "2024-Robot"); // Set a metadata value
+    // Record metadata about robot code
+    Logger.recordMetadata("ProjectName", "2024-Robot");
+    Logger.recordMetadata("RuntimeType", getRuntimeType().toString());
+    Logger.recordMetadata("BuildDate", BuildConstants.BUILD_DATE);
+    Logger.recordMetadata("GitSHA", null);
+    Logger.recordMetadata("GitDate", null);
+    Logger.recordMetadata("GitBranch", null);
+    // Determine if the git repo is dirty
+    switch (BuildConstants.DIRTY) {
+      case 0:
+        Logger.recordMetadata("GitDirty", "Clean");
+        break;
+      case 1:
+        Logger.recordMetadata("GitDirty", "Uncommitted changes");
+        break;
+      default:
+        Logger.recordMetadata("GitDirty", "Unknown");
+        break;
+    }
 
     if (isReal()) {
-      Logger.addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
-      PowerDistribution pdh =
-          new PowerDistribution(
-              HardwareConstants.REV_PDH_ID, ModuleType.kRev); // Enables power distribution logging
-      pdh.setSwitchableChannel(true);
-      pdh.close();
+      Logger.addDataReceiver(new NT4Publisher());
+      LoggedPowerDistribution.getInstance(HardwareConstants.REV_PDH_ID, ModuleType.kRev);
       Logger.registerURCL(URCL.startExternal());
-
     } else {
       setUseTiming(false); // Run as fast as possible
-      String logPath =
-          LogFileUtil
-              .findReplayLog(); // Pull the replay log from AdvantageScope (or prompt the user)
-      Logger.setReplaySource(new WPILOGReader(logPath)); // Read replay log
-      Logger.addDataReceiver(
-          new WPILOGWriter(
-              LogFileUtil.addPathSuffix(logPath, "_sim"))); // Save outputs to a new log
+      String logPath = LogFileUtil.findReplayLog();
+      if (logPath != null) {
+        Logger.setReplaySource(new WPILOGReader(logPath));
+      } else {
+        Logger.addDataReceiver(new NT4Publisher());
+      }
+      Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
     }
     Logger.recordMetadata("GitSHA", BuildConstants.GIT_SHA);
 
-    // Logger.disableDeterministicTimestamps() // See "Deterministic Timestamps" in the
-    // "Understanding Data Flow" page
-    Logger.start(); // Start logging! No more data receivers, replay sources, or metadata values may
-    // be added.
+    // Start logging
+    Logger.start();
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
