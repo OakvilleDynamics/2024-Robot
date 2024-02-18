@@ -39,8 +39,8 @@ public final class Constants {
     public static final class DumpConstants {
 
       // Uppy Downy solonoid
-      public static final int OUT = 4;
-      public static final int IN = 14;
+      public static final int OUT = 0;
+      public static final int IN = 1;
     }
 
     public static final class ElevatorConstants {
@@ -62,9 +62,9 @@ public final class Constants {
     // TODO: Add button binds for driver controllers
 
     // Joystick Deadband
-    public static final double LEFT_X_DEADBAND = 0.5;
-    public static final double LEFT_Y_DEADBAND = 0.5;
-    public static final double RIGHT_X_DEADBAND = 0.5;
+    public static final double LEFT_X_DEADBAND = 0.1;
+    public static final double LEFT_Y_DEADBAND = 0.1;
+    public static final double RIGHT_X_DEADBAND = 0.1;
     public static final double TURN_CONSTANT = 6;
   }
 
