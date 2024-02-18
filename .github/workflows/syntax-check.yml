@@ -30,7 +30,6 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           fetch-depth: 0
-          persist-credentials: false
 
       # Setup Java 17
       - uses: actions/setup-java@v4
