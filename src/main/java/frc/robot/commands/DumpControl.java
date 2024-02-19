@@ -13,7 +13,7 @@ public class DumpControl extends Command {
 
   private static Dump DumpSubsystem;
 
-  private static Joystick Controller = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
+  private static Joystick DumpJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   /** Creates a new PneumaticsControl. */
   public DumpControl(Dump subsystem) {
@@ -30,10 +30,10 @@ public class DumpControl extends Command {
   @Override
   public void execute() {
     // TODO: Change this to the correct button
-    if (Controller.getRawButton(1)) {
-      DumpSubsystem.open();
+    if (DumpJoystick.getRawButton(1)) {
+      DumpSubsystem.openThenClose();
       // TODO: Change this to the correct button
-    } else if (Controller.getRawButton(2)) {
+    } else if (DumpJoystick.getRawButton(2)) {
       DumpSubsystem.close();
     }
   }

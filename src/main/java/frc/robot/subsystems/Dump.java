@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.PneumaticsConstants;
 import frc.robot.Constants.PneumaticsConstants.DumpConstants;
+import frc.robot.util.Time;
 
 public class Dump extends SubsystemBase {
 
@@ -37,6 +38,14 @@ public class Dump extends SubsystemBase {
   public void close() {
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     SmartDashboard.putBoolean(getName(), false);
+  }
+
+  /** Opens the piston, waits after a delay, then closes the piston */
+  public void openThenClose() {
+    Time.performThenWait(this::open, 2.0);
+    Time.performThenWait(this::close, 0.5);
+    Time.performThenWait(this::open, 1);
+    close();
   }
 
   @Override

@@ -39,8 +39,8 @@ public final class Constants {
     public static final class DumpConstants {
 
       // Uppy Downy solonoid
-      public static final int OUT = 0;
-      public static final int IN = 1;
+      public static final int OUT = 1;
+      public static final int IN = 0;
     }
 
     public static final class ElevatorConstants {
