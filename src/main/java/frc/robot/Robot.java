@@ -55,9 +55,9 @@ public class Robot extends LoggedRobot {
     Logger.recordMetadata("ProjectName", "2024-Robot");
     Logger.recordMetadata("RuntimeType", getRuntimeType().toString());
     Logger.recordMetadata("BuildDate", BuildConstants.BUILD_DATE);
-    Logger.recordMetadata("GitSHA", null);
-    Logger.recordMetadata("GitDate", null);
-    Logger.recordMetadata("GitBranch", null);
+    Logger.recordMetadata("GitSHA", BuildConstants.GIT_SHA);
+    Logger.recordMetadata("GitDate", BuildConstants.GIT_DATE);
+    Logger.recordMetadata("GitBranch", BuildConstants.GIT_BRANCH);
     // Determine if the git repo is dirty
     switch (BuildConstants.DIRTY) {
       case 0:
@@ -85,7 +85,6 @@ public class Robot extends LoggedRobot {
       }
       Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
     }
-    Logger.recordMetadata("GitSHA", BuildConstants.GIT_SHA);
 
     // Start logging
     Logger.start();
