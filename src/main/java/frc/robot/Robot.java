@@ -5,12 +5,21 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Filesystem;
-import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.Constants.HardwareConstants;
 import java.io.File;
 import java.io.IOException;
+import org.littletonrobotics.junction.LogFileUtil;
+import org.littletonrobotics.junction.LoggedRobot;
+import org.littletonrobotics.junction.Logger;
+import org.littletonrobotics.junction.inputs.LoggedPowerDistribution;
+import org.littletonrobotics.junction.networktables.NT4Publisher;
+import org.littletonrobotics.junction.wpilog.WPILOGReader;
+import org.littletonrobotics.junction.wpilog.WPILOGWriter;
+import org.littletonrobotics.urcl.URCL;
 import swervelib.parser.SwerveParser;
 
 /**
@@ -19,7 +28,7 @@ import swervelib.parser.SwerveParser;
  * the package after creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends LoggedRobot {
 
   private static Robot instance;
   private Command m_autonomousCommand;
@@ -42,6 +51,45 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    // Record metadata about robot code
+    Logger.recordMetadata("ProjectName", "2024-Robot");
+    Logger.recordMetadata("RuntimeType", getRuntimeType().toString());
+    Logger.recordMetadata("BuildDate", BuildConstants.BUILD_DATE);
+    Logger.recordMetadata("GitSHA", null);
+    Logger.recordMetadata("GitDate", null);
+    Logger.recordMetadata("GitBranch", null);
+    // Determine if the git repo is dirty
+    switch (BuildConstants.DIRTY) {
+      case 0:
+        Logger.recordMetadata("GitDirty", "Clean");
+        break;
+      case 1:
+        Logger.recordMetadata("GitDirty", "Uncommitted changes");
+        break;
+      default:
+        Logger.recordMetadata("GitDirty", "Unknown");
+        break;
+    }
+
+    if (isReal()) {
+      Logger.addDataReceiver(new NT4Publisher());
+      LoggedPowerDistribution.getInstance(HardwareConstants.REV_PDH_ID, ModuleType.kRev);
+      Logger.registerURCL(URCL.startExternal());
+    } else {
+      setUseTiming(false); // Run as fast as possible
+      String logPath = LogFileUtil.findReplayLog();
+      if (logPath != null) {
+        Logger.setReplaySource(new WPILOGReader(logPath));
+      } else {
+        Logger.addDataReceiver(new NT4Publisher());
+      }
+      Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
+    }
+    Logger.recordMetadata("GitSHA", BuildConstants.GIT_SHA);
+
+    // Start logging
+    Logger.start();
+
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();

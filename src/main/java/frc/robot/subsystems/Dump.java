@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.PneumaticsConstants;
+import frc.robot.Constants.HardwareConstants;
 import frc.robot.Constants.PneumaticsConstants.DumpConstants;
 import frc.robot.util.Time;
 
@@ -17,7 +17,7 @@ public class Dump extends SubsystemBase {
   // The double solenoid that controls the piston
   private DoubleSolenoid doubleSolenoid =
       new DoubleSolenoid(
-          PneumaticsConstants.PneumaticsMoudleID,
+          HardwareConstants.REV_PH_ID,
           PneumaticsModuleType.REVPH,
           DumpConstants.IN,
           DumpConstants.OUT);

@@ -32,12 +32,13 @@ public final class Constants {
     public static final double MAX_ACCELERATION = 2;
   }
 
+  public static final class HardwareConstants {
+    public static final int REV_PDH_ID = 60;
+    public static final int REV_PH_ID = 61;
+  }
+
   public static final class PneumaticsConstants {
-
-    public static final int PneumaticsMoudleID = 61;
-
     public static final class DumpConstants {
-
       // Uppy Downy solonoid
       public static final int OUT = 1;
       public static final int IN = 0;
