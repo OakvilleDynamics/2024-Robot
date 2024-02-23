@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ main ]
 
+# Set permissions for the workflow
+permissions:
+  contents: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
@@ -19,11 +23,14 @@ jobs:
   spotless:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    # If the action is triggered by Dependabot, do not run these checks
+    if: ${{ github.actor != 'dependabot[bot]' }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.PAT }}
           fetch-depth: 0
 
       # Setup Java 17
@@ -34,11 +41,7 @@ jobs:
 
       # Setup Gradle
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
-      # Grant execute permission for gradlew
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        uses: gradle/actions/setup-gradle@v3
 
       # Runs our formatter for easier code review
       - name: Run spotlessApply

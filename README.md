@@ -6,11 +6,11 @@ The source code for our 2024 FRC Robot for Cresendo. Prepackaged with GitHub Act
 
 | Action            | Status                                                                                                                                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Build             | [![Build](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/build.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/build.yml)                                                           |
-| Qodana            | [![Qodana](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/qodana.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/qodana.yml)                                                        |
-| CodeQL            | [![CodeQL Scanning](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/codeql.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/codeql.yml)                                               |
-| Spotless          | [![Syntax Check](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/syntax-check.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/syntax-check.yml)                                      |
-| Gradle Validation | [![Validate Gradle Wrapper](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/gradle-wrapper-validation.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/gradle-wrapper-validation.yml) |
+| CI                | [![CI](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/ci.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/ci.yml)                                                                                    |
+| Qodana            | [![Qodana](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/qodana.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/qodana.yml)                                                                        |
+| CodeQL            | [![CodeQL Scanning](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/codeql.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/codeql.yml)                                                               |
+| Spotless          | [![Syntax Check](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/syntax-check.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/syntax-check.yml)                                                      |
+| Gradle Validation | [![Validate Gradle Wrapper](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/gradle-wrapper-validation.yml/badge.svg)](https://github.com/OakvilleDynamics/2024-Robot/actions/workflows/gradle-wrapper-validation.yml)                 |
 
 ## How to use
 
@@ -32,5 +32,5 @@ The source code for our 2024 FRC Robot for Cresendo. Prepackaged with GitHub Act
 
 ## Requirements
 
-- WPILib 2024.1.1
+- WPILib 2024.3.1
 - Internet connection (for Gradle to download dependencies)

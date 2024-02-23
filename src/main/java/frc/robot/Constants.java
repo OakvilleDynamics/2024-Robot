@@ -32,6 +32,24 @@ public final class Constants {
     public static final double MAX_ACCELERATION = 2;
   }
 
+  public static final class HardwareConstants {
+    public static final int REV_PDH_ID = 60;
+    public static final int REV_PH_ID = 61;
+  }
+
+  public static final class PneumaticsConstants {
+    public static final class DumpConstants {
+      // Uppy Downy solonoid
+      public static final int OUT = 1;
+      public static final int IN = 0;
+    }
+
+    public static final class ElevatorConstants {
+      // upy downy chain lift thing
+
+    }
+  }
+
   public static final class Drivebase {
 
     // Hold time on motor brakes when disabled
@@ -39,11 +57,33 @@ public final class Constants {
   }
 
   public static class OperatorConstants {
+    public static final int DRIVER_CONTROLLER = 0;
+    public static final int COPILOT_CONTROLLER = 1;
+
+    // TODO: Add button binds for driver controllers
 
     // Joystick Deadband
-    public static final double LEFT_X_DEADBAND = 0.01;
-    public static final double LEFT_Y_DEADBAND = 0.01;
-    public static final double RIGHT_X_DEADBAND = 0.01;
+    public static final double LEFT_X_DEADBAND = 0.1;
+    public static final double LEFT_Y_DEADBAND = 0.1;
+    public static final double RIGHT_X_DEADBAND = 0.1;
     public static final double TURN_CONSTANT = 6;
+  }
+
+  public static class MechanismConstants {
+
+    // Intake Motors
+    public static final int INTAKE_MOTOR_SUSHI = 51;
+    public static final int INTAKE_MOTOR_FRONT = 52;
+    public static final boolean INTAKE_MOTOR_SUSHI_INVERTED = true;
+    public static final boolean INTAKE_MOTOR_FRONT_INVERTED = false;
+    public static final double INTAKE_MOTOR_SPEED_FRONT = 0.8;
+    public static final double INTAKE_MOTOR_SPEED_SUSHI = 0.8;
+
+    // Conveyor Motors
+    public static final int CONVEYOR_MOTOR_1 = 1;
+    public static final int CONVEYOR_MOTOR_2 = 2;
+    public static final boolean CONVEYOR_MOTOR_1_INVERTED = true;
+    public static final boolean CONVEYOR_MOTOR_2_INVERTED = true;
+    public static final double CONVEYOR_MOTOR_SPEED = 0.30;
   }
 }
