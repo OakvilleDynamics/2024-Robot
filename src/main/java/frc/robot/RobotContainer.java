@@ -36,9 +36,6 @@ import java.io.File;
  */
 public class RobotContainer {
 
-  // The robot's subsystems and commands are defined here...
-  private final SwerveSubsystem drivebase =
-      new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
   // CommandJoystick rotationController = new CommandJoystick(1);
   // Replace with CommandPS4Controller or CommandJoystick if needed
   CommandJoystick driverController = new CommandJoystick(1);
@@ -46,6 +43,11 @@ public class RobotContainer {
   // CommandJoystick driverController   = new
   // CommandJoystick(3);//(OperatorConstants.DRIVER_CONTROLLER_PORT);
   XboxController driverXbox = new XboxController(0);
+  
+  // The robot's subsystems and commands are defined here...
+  private final SwerveSubsystem drivebase =
+      new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"), driverXbox);
+
   // Connect
   private final Intake intake = new Intake();
   private final Dump dump = new Dump();
