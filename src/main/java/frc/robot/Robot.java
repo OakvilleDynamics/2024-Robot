@@ -76,14 +76,15 @@ public class Robot extends LoggedRobot {
       LoggedPowerDistribution.getInstance(HardwareConstants.REV_PDH_ID, ModuleType.kRev);
       Logger.registerURCL(URCL.startExternal());
     } else {
-      setUseTiming(false); // Run as fast as possible
-      String logPath = LogFileUtil.findReplayLog();
-      if (logPath != null) {
+      setUseTiming(false);
+      try {
+        String logPath = LogFileUtil.findReplayLog();
         Logger.setReplaySource(new WPILOGReader(logPath));
-      } else {
+        Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
+      } catch (Exception e) {
+        e.printStackTrace();
         Logger.addDataReceiver(new NT4Publisher());
       }
-      Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
     }
 
     // Start logging

@@ -8,6 +8,7 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -103,6 +104,34 @@ public class RobotContainer {
             () -> driverXbox.getRawAxis(2));
 
     drivebase.setDefaultCommand(closedAbsoluteDriveAdv);
+
+    // Checks if the git repo is dirty or if the branch is not main and output warnings as errors.
+    if (BuildConstants.DIRTY != 0) {
+      DriverStation.reportError(
+          "WARNING! THERE ARE CHANGES THAT CURRENTLY IS NOT COMMITTED! PLEASE COMMIT THOSE CHANGES TO GIT/GITHUB OR REVERT THOSE CHANGES!",
+          false);
+      DriverStation.reportError("To see the changes, run `git status` in the terminal.", false);
+      DriverStation.reportError(
+          "To commit the changes, run `git add .` to stage the changes, then run `git commit -m \"<commit message>\"` to commit the changes.",
+          false);
+      DriverStation.reportError(
+          "To revert the changes, run `git reset --hard` to revert the changes. This will permanently delete those changes.",
+          false);
+      DriverStation.reportError(
+          "You can also open the GitHub Desktop application to perform these actions.", false);
+      DriverStation.reportError("Remember to push your changes after committing.", false);
+    }
+    if (!BuildConstants.GIT_BRANCH.equals("main")) {
+      DriverStation.reportError(
+          "WARNING! YOU ARE NOT ON THE MAIN BRANCH! PLEASE MERGE YOUR CHANGES TO MAIN OR REVERT THOSE CHANGES!",
+          false);
+      DriverStation.reportError(
+          "To see the current branch, run `git branch` in the terminal.", false);
+      DriverStation.reportError(
+          "To merge your changes to main, push your changes to GitHub and go to the GitHub repository and create a pull request.",
+          false);
+      DriverStation.reportError("Wait for the pull request to be reviewed and merged.", false);
+    }
   }
 
   /**
