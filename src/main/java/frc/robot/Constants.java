@@ -84,6 +84,6 @@ public final class Constants {
     public static final int CONVEYOR_MOTOR_2 = 2;
     public static final boolean CONVEYOR_MOTOR_1_INVERTED = true;
     public static final boolean CONVEYOR_MOTOR_2_INVERTED = false;
-    public static final double CONVEYOR_MOTOR_SPEED = 0.40;
+    public static final double CONVEYOR_MOTOR_SPEED = 0.38;
   }
 }
