@@ -61,7 +61,7 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
 
-    AbsoluteDriveAdv closedAbsoluteDriveAdv =
+    final AbsoluteDriveAdv closedAbsoluteDriveAdv =
         new AbsoluteDriveAdv(
             drivebase,
             () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
@@ -94,7 +94,7 @@ public class RobotContainer {
         drivebase.driveCommand(
             () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
-            () -> driverXbox.getRawAxis(2));
+            () -> driverXbox.getRightX() * 0.5);
 
     Command driveFieldOrientedDirectAngleSim =
         drivebase.simDriveCommand(
@@ -102,7 +102,7 @@ public class RobotContainer {
             () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
             () -> driverXbox.getRawAxis(2));
 
-    drivebase.setDefaultCommand(closedAbsoluteDriveAdv);
+    drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
   }
 
   /**
