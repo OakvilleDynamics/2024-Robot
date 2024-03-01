@@ -102,7 +102,7 @@ public class RobotContainer {
             () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
             () -> driverXbox.getRawAxis(2));
 
-    drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
+    drivebase.setDefaultCommand(driveFieldOrientedDirectAngle);
   }
 
   /**
