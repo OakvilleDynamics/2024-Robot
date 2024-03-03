@@ -22,8 +22,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.LimelightDriveConstants;
-
+import frc.robot.util.LimelightHelpers;
 import java.io.File;
 import java.util.function.DoubleSupplier;
 import swervelib.SwerveController;
@@ -43,7 +42,9 @@ public class SwerveSubsystem extends SubsystemBase {
   private XboxController m_controller;
 
   /** Maximum speed of the robot in meters per second, used to limit acceleration. */
-  public double maximumSpeed = Units.feetToMeters(14.5);
+  public static final double kMaximumSpeed = Units.feetToMeters(14.5);
+
+  public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
 
   /**
    * Initialize {@link SwerveDrive} with the directory provided.
@@ -73,7 +74,7 @@ public class SwerveSubsystem extends SubsystemBase {
     // created.
     SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
     try {
-      swerveDrive = new SwerveParser(directory).createSwerveDrive(maximumSpeed);
+      swerveDrive = new SwerveParser(directory).createSwerveDrive(kMaximumSpeed);
       // Alternative method if you don't want to supply the conversion factor via JSON files.
       // swerveDrive = new SwerveParser(directory).createSwerveDrive(maximumSpeed,
       // angleConversionFactor, driveConversionFactor);
@@ -94,7 +95,7 @@ public class SwerveSubsystem extends SubsystemBase {
    */
   public SwerveSubsystem(
       SwerveDriveConfiguration driveCfg, SwerveControllerConfiguration controllerCfg) {
-    swerveDrive = new SwerveDrive(driveCfg, controllerCfg, maximumSpeed);
+    swerveDrive = new SwerveDrive(driveCfg, controllerCfg, kMaximumSpeed);
   }
 
   /** Setup AutoBuilder for PathPlanner. */
@@ -277,21 +278,21 @@ public class SwerveSubsystem extends SubsystemBase {
     var driveRotation = rotation;
     var driveFieldRelative = fieldRelative;
 
-    // while the A-button is pressed, overwrite some of the driving values with the output of our limelight methods
-    if(m_controller != null && m_controller.getAButton())
-    {
-        final var rot_limelight = limelight_aim_proportional();
-        driveRotation = rot_limelight;
+    // while the A-button is pressed, overwrite some of the driving values with the output of our
+    // limelight methods
+    if (m_controller != null && m_controller.getAButton()) {
+      final var rot_limelight = limelight_aim_proportional();
+      driveRotation = rot_limelight;
 
-        final var forward_limelight = limelight_range_proportional();
-        driveTranslation = new Translation2d(
-                  Math.pow(translation.getX(), 3) * forward_limelight,
-                  Math.pow(translation.getY(), 3) * forward_limelight);
+      final var forward_limelight = limelight_range_proportional();
+      driveTranslation =
+          new Translation2d(
+              Math.pow(translation.getX(), 3) * forward_limelight,
+              Math.pow(translation.getY(), 3) * forward_limelight);
 
-        //while using Limelight, turn off field-relative driving.
-        driveFieldRelative = false;
+      // while using Limelight, turn off field-relative driving.
+      driveFieldRelative = false;
     }
-
 
     swerveDrive.drive(
         driveTranslation,
@@ -302,25 +303,25 @@ public class SwerveSubsystem extends SubsystemBase {
 
   // simple proportional turning control with Limelight.
   // "proportional control" is a control algorithm in which the output is proportional to the error.
-  // in this case, we are going to return an angular velocity that is proportional to the 
+  // in this case, we are going to return an angular velocity that is proportional to the
   // "tx" value from the Limelight.
-  double limelight_aim_proportional()
-  {    
+  double limelight_aim_proportional() {
     // kP (constant of proportionality)
-    // this is a hand-tuned number that determines the aggressiveness of our proportional control loop
+    // this is a hand-tuned number that determines the aggressiveness of our proportional control
+    // loop
     // if it is too high, the robot will oscillate.
     // if it is too low, the robot will never reach its target
     // if the robot never turns in the correct direction, kP should be inverted.
     double kP = .035;
 
-    // tx ranges from (-hfov/2) to (hfov/2) in degrees. If your target is on the rightmost edge of 
+    // tx ranges from (-hfov/2) to (hfov/2) in degrees. If your target is on the rightmost edge of
     // your limelight 3 feed, tx should return roughly 31 degrees.
     double targetingAngularVelocity = LimelightHelpers.getTX("limelight") * kP;
 
     // convert to radians per second for our drive method
-    targetingAngularVelocity *= LimelightDriveConstants.MAX_ANGULAR_SPEED;
+    targetingAngularVelocity *= kMaxAngularSpeed;
 
-    //invert since tx is positive when the target is to the right of the crosshair
+    // invert since tx is positive when the target is to the right of the crosshair
     targetingAngularVelocity *= -1.0;
 
     return targetingAngularVelocity;
@@ -328,16 +329,15 @@ public class SwerveSubsystem extends SubsystemBase {
 
   // simple proportional ranging control with Limelight's "ty" value
   // this works best if your Limelight's mount height and target mount height are different.
-  // if your limelight and target are mounted at the same or similar heights, use "ta" (area) for target ranging rather than "ty"
-  double limelight_range_proportional()
-  {    
+  // if your limelight and target are mounted at the same or similar heights, use "ta" (area) for
+  // target ranging rather than "ty"
+  double limelight_range_proportional() {
     double kP = .1;
     double targetingForwardSpeed = LimelightHelpers.getTY("limelight") * kP;
-    targetingForwardSpeed *= LimelightDriveConstants.MAX_SPEED;
+    targetingForwardSpeed *= kMaximumSpeed;
     targetingForwardSpeed *= -1.0;
     return targetingForwardSpeed;
   }
-
 
   /**
    * Drive the robot given a chassis field oriented velocity.
@@ -452,7 +452,7 @@ public class SwerveSubsystem extends SubsystemBase {
     xInput = Math.pow(xInput, 3);
     yInput = Math.pow(yInput, 3);
     return swerveDrive.swerveController.getTargetSpeeds(
-        xInput, yInput, headingX, headingY, getHeading().getRadians(), maximumSpeed);
+        xInput, yInput, headingX, headingY, getHeading().getRadians(), kMaximumSpeed);
   }
 
   /**
@@ -468,7 +468,7 @@ public class SwerveSubsystem extends SubsystemBase {
     xInput = Math.pow(xInput, 3);
     yInput = Math.pow(yInput, 3);
     return swerveDrive.swerveController.getTargetSpeeds(
-        xInput, yInput, angle.getRadians(), getHeading().getRadians(), maximumSpeed);
+        xInput, yInput, angle.getRadians(), getHeading().getRadians(), kMaximumSpeed);
   }
 
   /**

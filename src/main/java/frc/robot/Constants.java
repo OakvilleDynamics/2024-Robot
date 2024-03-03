@@ -86,9 +86,4 @@ public final class Constants {
     public static final boolean CONVEYOR_MOTOR_2_INVERTED = true;
     public static final double CONVEYOR_MOTOR_SPEED = 0.30;
   }
-
-  public static class LimelightDriveConstants {
-    public static final double MAX_SPEED = 3.0;  // 3 meters per second
-    public static final double MAX_ANGULAR_SPEED = Math.PI; // 1/2 rotation per second
-  }
 }
