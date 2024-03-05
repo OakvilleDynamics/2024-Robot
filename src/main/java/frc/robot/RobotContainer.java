@@ -20,10 +20,12 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.DumpControl;
+import frc.robot.commands.FlyWCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Dump;
+import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
@@ -50,6 +52,7 @@ public class RobotContainer {
   private final Intake intake = new Intake();
   private final Dump dump = new Dump();
   private final Conveyor conveyor = new Conveyor();
+  private final FlyWheel flyWheel = new FlyWheel();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -57,6 +60,7 @@ public class RobotContainer {
     intake.setDefaultCommand(new IntakeCommand(intake));
     dump.setDefaultCommand(new DumpControl(dump));
     conveyor.setDefaultCommand(new ConveyorCommand(conveyor));
+    flyWheel.setDefaultCommand(new FlyWCommand(flyWheel));
 
     // Configure the trigger bindings
     configureBindings();
