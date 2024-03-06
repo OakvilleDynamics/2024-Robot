@@ -12,7 +12,7 @@ public class FlyWCommand extends Command {
   private final FlyWheel m_FlyWSubsystem;
   // controller
   // TODO: Change this to the correct controller
-  private final Joystick Joystick = new Joystick(1);
+  private final Joystick FlyWJoystick = new Joystick(1);
 
   public FlyWCommand(FlyWheel subsystem) {
     m_FlyWSubsystem = subsystem;
@@ -24,9 +24,9 @@ public class FlyWCommand extends Command {
 
   @Override
   public void execute() {
-    if (Joystick.getPOV() != -1) {
+    if (FlyWJoystick.getPOV() != -1) {
       m_FlyWSubsystem.enableflywheel();
-    } else if (Joystick.getRawButton(7) == true) {
+    } else if (FlyWJoystick.getRawButton(7) == true) {
       m_FlyWSubsystem.reverseflywheel();
       System.out.println("Flywheels Moving in Reverse");
     } else {
