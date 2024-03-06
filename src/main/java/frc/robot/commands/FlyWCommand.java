@@ -24,13 +24,13 @@ public class FlyWCommand extends Command {
 
   @Override
   public void execute() {
-    if (FlyWJoystick.getPOV() != -1) {
-      m_FlyWSubsystem.enableflywheel();
+    if (FlyWJoystick.getPOV() == 215 | FlyWJoystick.getPOV() == 0 | FlyWJoystick.getPOV() == 45) {
+      m_FlyWSubsystem.enableflywheelreduced();
+    } else if (FlyWJoystick.getPOV() == 225 | FlyWJoystick.getPOV() == 180 | FlyWJoystick.getPOV() == 135) {
+      m_FlyWSubsystem.enableflywheelslow();
     } else if (FlyWJoystick.getRawButton(7) == true) {
       m_FlyWSubsystem.reverseflywheel();
-      System.out.println("Conveyor Moving in Reverse");
-    } else if (ConveyorJoystick.getRawButton(9) == true) {
-      m_FlyWSubsystem.enableflywheelslow();
+      System.out.println("Flywheels Moving in Reverse");
     } else {
       m_FlyWSubsystem.disableflywheel();
     }

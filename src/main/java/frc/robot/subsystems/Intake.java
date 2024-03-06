@@ -31,9 +31,9 @@ public class Intake extends SubsystemBase {
   /** Sets the sushi motors to 100% power. */
   public void enableIntakeSushi() {
     intakeSushi.set(MechanismConstants.INTAKE_MOTOR_SPEED_SUSHI);
-    //intakeFront.set(MechanismConstants.INTAKE_MOTOR_SPEED_FRONT);
+    // intakeFront.set(MechanismConstants.INTAKE_MOTOR_SPEED_FRONT);
   }
-  
+
   /** Sets the front intake motors to 100% power. */
   public void enableIntakeFront() {
     intakeFront.set(MechanismConstants.INTAKE_MOTOR_SPEED_FRONT);
@@ -54,6 +54,7 @@ public class Intake extends SubsystemBase {
   public void reverseIntakeFront() {
     intakeFront.set(-MechanismConstants.INTAKE_MOTOR_SPEED_FRONT);
   }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
