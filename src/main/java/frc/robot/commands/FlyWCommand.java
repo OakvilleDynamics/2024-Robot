@@ -28,7 +28,9 @@ public class FlyWCommand extends Command {
       m_FlyWSubsystem.enableflywheel();
     } else if (FlyWJoystick.getRawButton(7) == true) {
       m_FlyWSubsystem.reverseflywheel();
-      System.out.println("Flywheels Moving in Reverse");
+      System.out.println("Conveyor Moving in Reverse");
+    } else if (ConveyorJoystick.getRawButton(9) == true) {
+      m_FlyWSubsystem.enableflywheelslow();
     } else {
       m_FlyWSubsystem.disableflywheel();
     }
@@ -37,7 +39,6 @@ public class FlyWCommand extends Command {
   @Override
   public void end(boolean interrupted) {
     m_FlyWSubsystem.disableflywheel();
-    m_FlyWSubsystem.enableflywheel();
   }
 
   @Override
