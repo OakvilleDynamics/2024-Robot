@@ -25,12 +25,14 @@ public class FlyWCommand extends Command {
   @Override
   public void execute() {
     // TODO: Change this to the correct button
-    if (ConveyorJoystick.getRawButton(3) == true) {
-      m_FlyWSubsystem.enableflywheel();
+    if (ConveyorJoystick.getRawButton(7) == true) {
+      m_FlyWSubsystem.enableflywheelfast();
       // TODO: Change this to the correct button
-    } else if (ConveyorJoystick.getRawButton(4) == true) {
+    } else if (ConveyorJoystick.getRawButton(8) == true) {
       m_FlyWSubsystem.reverseflywheel();
       System.out.println("Conveyor Moving in Reverse");
+    } else if (ConveyorJoystick.getRawButton(9) == true) {
+      m_FlyWSubsystem.enableflywheelslow();
     } else {
       m_FlyWSubsystem.disableflywheel();
     }
@@ -39,7 +41,6 @@ public class FlyWCommand extends Command {
   @Override
   public void end(boolean interrupted) {
     m_FlyWSubsystem.disableflywheel();
-    m_FlyWSubsystem.enableflywheel();
   }
 
   @Override

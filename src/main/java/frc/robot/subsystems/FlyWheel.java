@@ -23,9 +23,15 @@ public class FlyWheel extends SubsystemBase {
   }
 
   /** Sets the flywheel motors to 100% power. */
-  public void enableflywheel() {
+  public void enableflywheelfast() {
     flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED);
     flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED);
+  }
+
+  /** Sets the flywheel motors to slow speed */
+  public void enableflywheelslow() {
+    flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
+    flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
   }
 
   /** Sets the flywheel motors to 0% power. */
@@ -36,8 +42,8 @@ public class FlyWheel extends SubsystemBase {
 
   /** Sets the flywheel motors to -100% power. (Reverse direction) */
   public void reverseflywheel() {
-    flywheelMotor1.set(-MechanismConstants.FLYWHEEL_MOTOR_SPEED);
-    flywheelMotor2.set(-MechanismConstants.FLYWHEEL_MOTOR_SPEED);
+    flywheelMotor1.set(-MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
+    flywheelMotor2.set(-MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
   }
 
   @Override
