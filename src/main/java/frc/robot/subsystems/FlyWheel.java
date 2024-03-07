@@ -35,7 +35,7 @@ public class FlyWheel extends SubsystemBase {
   }
 
   /** Sets the flywheel motors to 15% */
-  public void enableflywheelslow() {
+  public void enableflywheellow() {
     flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
     flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
   }
