@@ -31,7 +31,7 @@ public class DumpControl extends Command {
   public void execute() {
     // TODO: Change this to the correct button
     if (DumpJoystick.getRawButton(1)) {
-      DumpSubsystem.openThenClose();
+      DumpSubsystem.open();
       // TODO: Change this to the correct button
     } else if (DumpJoystick.getRawButton(2)) {
       DumpSubsystem.close();
