@@ -6,13 +6,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.Intake;
 
 public class IntakeCommand extends Command {
   private final Intake m_intakeSubsystem;
   // controller
   // TODO: Change this to the correct controller
-  private final Joystick IntakeJoystick = new Joystick(1);
+  private final Joystick IntakeJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   public IntakeCommand(Intake subsystem) {
     m_intakeSubsystem = subsystem;
