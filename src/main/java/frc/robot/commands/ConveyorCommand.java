@@ -26,7 +26,6 @@ public class ConveyorCommand extends Command {
   public void execute() {
     if (ConveyorJoystick.getRawButton(5) == true | ConveyorJoystick.getRawButton(3) == true) {
       m_ConveyorSubsystem.enableConveyor();
-      // TODO: Change this to the correct button
     } else if (ConveyorJoystick.getRawButton(6) == true | ConveyorJoystick.getRawButton(4)) {
       m_ConveyorSubsystem.reverseConveyor();
       System.out.println("Conveyor Moving in Reverse");
