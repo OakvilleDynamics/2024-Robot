@@ -21,10 +21,12 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ConveyorCommand;
 import frc.robot.commands.DumpControl;
+import frc.robot.commands.FlyWCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Dump;
+import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
@@ -51,6 +53,7 @@ public class RobotContainer {
   private final Intake intake = new Intake();
   private final Dump dump = new Dump();
   private final Conveyor conveyor = new Conveyor();
+  private final FlyWheel flyWheel = new FlyWheel();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -58,11 +61,12 @@ public class RobotContainer {
     intake.setDefaultCommand(new IntakeCommand(intake));
     dump.setDefaultCommand(new DumpControl(dump));
     conveyor.setDefaultCommand(new ConveyorCommand(conveyor));
+    flyWheel.setDefaultCommand(new FlyWCommand(flyWheel));
 
     // Configure the trigger bindings
     configureBindings();
 
-    AbsoluteDriveAdv closedAbsoluteDriveAdv =
+    final AbsoluteDriveAdv closedAbsoluteDriveAdv =
         new AbsoluteDriveAdv(
             drivebase,
             () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
@@ -95,7 +99,7 @@ public class RobotContainer {
         drivebase.driveCommand(
             () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
-            () -> driverXbox.getRawAxis(2));
+            () -> driverXbox.getRightX() * 0.5);
 
     Command driveFieldOrientedDirectAngleSim =
         drivebase.simDriveCommand(
@@ -103,9 +107,7 @@ public class RobotContainer {
             () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
             () -> driverXbox.getRawAxis(2));
 
-    drivebase.setDefaultCommand(closedAbsoluteDriveAdv);
-
-    // Checks if the git repo is dirty or if the branch is not main and output warnings as errors.
+    // Checks if the git repo is dirty and output warnings as errors
     if (BuildConstants.DIRTY != 0) {
       DriverStation.reportError(
           "WARNING! THERE ARE CHANGES THAT CURRENTLY IS NOT COMMITTED! PLEASE COMMIT THOSE CHANGES TO GIT/GITHUB OR REVERT THOSE CHANGES!",
@@ -121,6 +123,7 @@ public class RobotContainer {
           "You can also open the GitHub Desktop application to perform these actions", false);
       DriverStation.reportError("Remember to push your changes after committing", false);
     }
+    // Checks if the branch is currently not on 'main' and output the warnings as errors
     if (!BuildConstants.GIT_BRANCH.equals("main")) {
       DriverStation.reportError(
           "WARNING! YOU ARE NOT ON THE MAIN BRANCH! PLEASE MERGE YOUR CHANGES TO MAIN OR REVERT THOSE CHANGES!",
@@ -132,6 +135,8 @@ public class RobotContainer {
           false);
       DriverStation.reportError("Wait for the pull request to be reviewed and merged", false);
     }
+    
+    drivebase.setDefaultCommand(driveFieldOrientedDirectAngle);
   }
 
   /**
