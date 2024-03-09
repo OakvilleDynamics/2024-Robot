@@ -8,6 +8,7 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -105,6 +106,49 @@ public class RobotContainer {
             () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
             () -> driverXbox.getRawAxis(2));
+
+    // Checks if the git repo is dirty and output warnings as errors
+    if (BuildConstants.DIRTY != 0) {
+      DriverStation.reportError(
+          "WARNING! THERE ARE CHANGES THAT CURRENTLY IS NOT COMMITTED! PLEASE COMMIT THOSE CHANGES TO GIT/GITHUB OR REVERT THOSE CHANGES!",
+          false);
+      DriverStation.reportError("To see the changes, run `git status` in the terminal", false);
+      DriverStation.reportError(
+          "To commit the changes, run `git add .` to stage the changes, then run `git commit -m \"<commit message>\"` to commit the changes",
+          false);
+      DriverStation.reportError(
+          "To revert the changes, run `git reset --hard` to revert the changes. This will permanently delete those changes",
+          false);
+      DriverStation.reportError(
+          "You can also open the GitHub Desktop application to perform these actions", false);
+      DriverStation.reportError("Remember to push your changes after committing", false);
+    }
+    // Checks if the branch is currently not on 'main' and output the warnings as errors
+    if (!BuildConstants.GIT_BRANCH.equals("main")) {
+      DriverStation.reportError(
+          "WARNING! YOU ARE NOT ON THE MAIN BRANCH! PLEASE MERGE YOUR CHANGES TO MAIN OR REVERT THOSE CHANGES!",
+          false);
+      DriverStation.reportError(
+          "To see the current branch, run `git branch` in the terminal", false);
+      DriverStation.reportError(
+          "To merge your changes to main, push your changes to GitHub and go to the GitHub repository and create a pull request",
+          false);
+      DriverStation.reportError("Wait for the pull request to be reviewed and merged", false);
+    } else if (BuildConstants.GIT_BRANCH.contains("event")) {
+      DriverStation.reportWarning(
+          "You are currently on an `event` branch. After an event, please merge your changes to main as the event progresses or after the event is over",
+          false);
+      DriverStation.reportWarning(
+          "With event branches, changes made on the fly here should be committed before each build/deploy to the robot",
+          false);
+      DriverStation.reportWarning(
+          "If you are done with the event, please merge and delete the event branch", false);
+      DriverStation.reportWarning(
+          "If you are not done with the event, please keep the event branch and continue working on it",
+          false);
+      DriverStation.reportWarning(
+          "If you are not sure, please ask your team leader or mentor for help", false);
+    }
 
     drivebase.setDefaultCommand(driveFieldOrientedDirectAngle);
   }
