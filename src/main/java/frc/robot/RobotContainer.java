@@ -134,6 +134,20 @@ public class RobotContainer {
           "To merge your changes to main, push your changes to GitHub and go to the GitHub repository and create a pull request",
           false);
       DriverStation.reportError("Wait for the pull request to be reviewed and merged", false);
+    } else if (BuildConstants.GIT_BRANCH.contains("event")) {
+      DriverStation.reportWarning(
+          "You are currently on an `event` branch. After an event, please merge your changes to main as the event progresses or after the event is over",
+          false);
+      DriverStation.reportWarning(
+          "With event branches, changes made on the fly here should be committed before each build/deploy to the robot",
+          false);
+      DriverStation.reportWarning(
+          "If you are done with the event, please merge and delete the event branch", false);
+      DriverStation.reportWarning(
+          "If you are not done with the event, please keep the event branch and continue working on it",
+          false);
+      DriverStation.reportWarning(
+          "If you are not sure, please ask your team leader or mentor for help", false);
     }
 
     drivebase.setDefaultCommand(driveFieldOrientedDirectAngle);
