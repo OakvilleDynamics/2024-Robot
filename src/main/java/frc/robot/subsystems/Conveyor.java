@@ -24,8 +24,8 @@ public class Conveyor extends SubsystemBase {
 
   /** Sets the Conveyor motors to 100% power. */
   public void intakeConveyor() {
-    conveyorMotor1.set(-MechanismConstants.CONVEYOR_MOTOR_SPEED);
-    conveyorMotor2.set(-MechanismConstants.CONVEYOR_MOTOR_SPEED);
+    conveyorMotor1.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
+    conveyorMotor2.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
   }
 
   /** Sets the Conveyor motors to 0% power. */
@@ -36,8 +36,8 @@ public class Conveyor extends SubsystemBase {
 
   /** Sets the Conveyor motors to -100% power. (Reverse direction) */
   public void reverseConveyor() {
-    conveyorMotor1.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
-    conveyorMotor2.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
+    conveyorMotor1.set(-MechanismConstants.CONVEYOR_MOTOR_SPEED);
+    conveyorMotor2.set(-MechanismConstants.CONVEYOR_MOTOR_SPEED);
   }
 
   @Override
