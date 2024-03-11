@@ -28,13 +28,13 @@ public class Elevator extends SubsystemBase {
   }
 
   /** Open pistons to go up */
-  public void open() {
+  public void up() {
     doubleSolenoid.set(DoubleSolenoid.Value.kForward);
     SmartDashboard.putBoolean(getName(), true);
   }
 
   /** Closes pistons to go down */
-  public void close() {
+  public void down() {
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     SmartDashboard.putBoolean(getName(), false);
   }

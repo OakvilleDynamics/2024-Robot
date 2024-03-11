@@ -30,9 +30,9 @@ public class ElevatorControl extends Command {
   @Override
   public void execute() {
     if (ElevatorJoystick.getThrottle() <= 15) {
-      ElevatorSubsystem.open();
+      ElevatorSubsystem.up();
     } else if (ElevatorJoystick.getThrottle() >= 85) {
-      ElevatorSubsystem.close();
+      ElevatorSubsystem.down();
     }
   }
 
