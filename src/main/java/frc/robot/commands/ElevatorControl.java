@@ -11,7 +11,7 @@ import frc.robot.subsystems.Elevator;
 
 public class ElevatorControl extends Command {
 
-    private static Elevator Elevatorsubsystem;
+    private static Elevator ElevatorSubsystem;
 
   private static Joystick ElevatorJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 

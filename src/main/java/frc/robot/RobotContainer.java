@@ -28,6 +28,7 @@ import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Dump;
 import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 
@@ -54,6 +55,7 @@ public class RobotContainer {
   private final Dump dump = new Dump();
   private final Conveyor conveyor = new Conveyor();
   private final FlyWheel flyWheel = new FlyWheel();
+  private final Flywheel elevator = new elevator();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -62,6 +64,7 @@ public class RobotContainer {
     dump.setDefaultCommand(new DumpControl(dump));
     conveyor.setDefaultCommand(new ConveyorCommand(conveyor));
     flyWheel.setDefaultCommand(new FlyWCommand(flyWheel));
+    elevator.setDefaultCommand(new ElevatorControl(elevator));
 
     // Configure the trigger bindings
     configureBindings();
