@@ -13,7 +13,7 @@ import frc.robot.Constants.HardwareConstants;
 import frc.robot.Constants.PneumaticsConstants.ElevatorConstants;
 import frc.robot.util.Time;
 
-public class Elevator {
+public class Elevator extends SubsystemBase {
     
 // double solenoid to control the pistons */
     private DoubleSolenoid doubleSolenoid =
@@ -24,7 +24,7 @@ public class Elevator {
           ElevatorConstants.OUT);
 
  /** Create new pnuematic system */
-    public elevator() {
+    public Elevator() {
         System.out.println("Pneumatic Elevator initialized");
     SmartDashboard.putBoolean(getName(), false);
     }
@@ -37,4 +37,5 @@ public void open() {
 public void close() {
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     SmartDashboard.putBoolean(getName(), false);
+}
 }
