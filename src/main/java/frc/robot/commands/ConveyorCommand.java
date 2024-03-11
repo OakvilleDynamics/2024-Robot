@@ -6,13 +6,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.Conveyor;
 
 public class ConveyorCommand extends Command {
   private final Conveyor m_ConveyorSubsystem;
   // controller
   // TODO: Change this to the correct controller
-  private final Joystick ConveyorJoystick = new Joystick(1);
+  private final Joystick ConveyorJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   public ConveyorCommand(Conveyor subsystem) {
     m_ConveyorSubsystem = subsystem;
@@ -24,11 +25,10 @@ public class ConveyorCommand extends Command {
 
   @Override
   public void execute() {
-    // TODO: Change this to the correct button
-    if (ConveyorJoystick.getRawButton(6) == true) {
-      m_ConveyorSubsystem.enableConveyor();
-      // TODO: Change this to the correct button
-    } else if (ConveyorJoystick.getRawButton(5) == true) {
+    if (ConveyorJoystick.getRawButton(5) == true | ConveyorJoystick.getRawButton(3) == true) {
+      m_ConveyorSubsystem.intakeConveyor();
+    } else if (ConveyorJoystick.getRawButton(6) == true
+        | ConveyorJoystick.getRawButton(4) == true) {
       m_ConveyorSubsystem.reverseConveyor();
       System.out.println("Conveyor Moving in Reverse");
     } else {
@@ -39,7 +39,7 @@ public class ConveyorCommand extends Command {
   @Override
   public void end(boolean interrupted) {
     m_ConveyorSubsystem.disableConveyor();
-    m_ConveyorSubsystem.enableConveyor();
+    m_ConveyorSubsystem.intakeConveyor();
   }
 
   @Override

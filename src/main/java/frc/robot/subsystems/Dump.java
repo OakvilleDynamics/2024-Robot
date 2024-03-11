@@ -29,13 +29,13 @@ public class Dump extends SubsystemBase {
   }
 
   /** Opens the piston */
-  public void open() {
+  public void close() {
     doubleSolenoid.set(DoubleSolenoid.Value.kForward);
     SmartDashboard.putBoolean(getName(), true);
   }
 
   /** Closes the piston */
-  public void close() {
+  public void open() {
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     SmartDashboard.putBoolean(getName(), false);
   }

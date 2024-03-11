@@ -83,8 +83,8 @@ public final class Constants {
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
     public static final int CONVEYOR_MOTOR_2 = 2;
-    public static final boolean CONVEYOR_MOTOR_1_INVERTED = true;
-    public static final boolean CONVEYOR_MOTOR_2_INVERTED = false;
+    public static final boolean CONVEYOR_MOTOR_1_INVERTED = false;
+    public static final boolean CONVEYOR_MOTOR_2_INVERTED = true;
     public static final double CONVEYOR_MOTOR_SPEED = 0.38;
 
     // Flywheel Motors
@@ -92,7 +92,8 @@ public final class Constants {
     public static final int FLYWHEEL_MOTOR_2 = 4;
     public static final boolean FLYWHEEL_MOTOR_1_INVERTED = true;
     public static final boolean FLYWHEEL_MOTOR_2_INVERTED = false;
-    public static final double FLYWHEEL_MOTOR_SPEED = 1.0;
+    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 1.0;
+    public static final double FLYWHEEL_MOTOR_REDUCED_SPEED = 0.65;
     public static final double FLYWHEEL_MOTOR_SPEED_SLOW = 0.15;
   }
 }
