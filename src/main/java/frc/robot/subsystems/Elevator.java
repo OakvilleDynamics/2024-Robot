@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.math.proto.System;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,7 +23,7 @@ public class Elevator extends SubsystemBase {
 
   /** Create new pnuematic system */
   public Elevator() {
-    System.out.println("Pneumatic Elevator initialized");
+    System.out.println("Elevator Initialized");
     SmartDashboard.putBoolean(getName(), false);
   }
 
