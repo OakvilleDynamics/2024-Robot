@@ -36,5 +36,5 @@ public void open() {
 /** Closes pistons to go down */
 public void close() {
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-    SmartDashboard.putBoolean(getName(), false)
+    SmartDashboard.putBoolean(getName(), false);
 }
