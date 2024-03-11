@@ -11,7 +11,7 @@ import frc.robot.subsystems.Elevator;
 
 public class ElevatorControl extends Command {
 
-    private static Elevator ElevatorSubsystem;
+  private static Elevator ElevatorSubsystem;
 
   private static Joystick ElevatorJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
@@ -21,7 +21,7 @@ public class ElevatorControl extends Command {
     addRequirements(subsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
-  
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
