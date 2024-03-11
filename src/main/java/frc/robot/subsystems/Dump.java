@@ -24,7 +24,7 @@ public class Dump extends SubsystemBase {
 
   /** Creates a new Pneumatics subsystem. */
   public Dump() {
-    System.out.println("Pneumatics initialized");
+    System.out.println("Pneumatic Dump initialized");
     SmartDashboard.putBoolean(getName(), false);
   }
 
