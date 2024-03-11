@@ -29,9 +29,9 @@ public class ElevatorControl extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (ElevatorJoystick.getThrottle() <= 15) {
+    if (ElevatorJoystick.getThrottle() <= -0.85) {
       ElevatorSubsystem.up();
-    } else if (ElevatorJoystick.getThrottle() >= 85) {
+    } else if (ElevatorJoystick.getThrottle() >= 0.85) {
       ElevatorSubsystem.down();
     }
   }
