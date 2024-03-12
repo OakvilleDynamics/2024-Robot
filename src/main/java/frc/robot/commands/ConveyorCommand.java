@@ -12,7 +12,6 @@ import frc.robot.subsystems.Conveyor;
 public class ConveyorCommand extends Command {
   private final Conveyor m_ConveyorSubsystem;
   // controller
-  // TODO: Change this to the correct controller
   private final Joystick ConveyorJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   public ConveyorCommand(Conveyor subsystem) {
