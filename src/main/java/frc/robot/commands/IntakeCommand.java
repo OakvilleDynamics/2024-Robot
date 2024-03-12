@@ -25,18 +25,18 @@ public class IntakeCommand extends Command {
 
   @Override
   public void execute() {
-    if (IntakeJoystick.getRawButton(5) == true) {
-      // sushi in
+    if (IntakeJoystick.getRawButton(5)) {
+      // sushi + Conveyor in
       m_intakeSubsystem.enableIntakeSushi();
-    } else if (IntakeJoystick.getRawButton(3) == true) {
-      // front in
+    } else if (IntakeJoystick.getRawButton(3)) {
+      // front + Conveyor in
       m_intakeSubsystem.enableIntakeFront();
-    } else if (IntakeJoystick.getRawButton(4) == true) {
-      // front out
+    } else if (IntakeJoystick.getRawButton(4)) {
+      // front + Conveyor out
       m_intakeSubsystem.reverseIntakeFront();
       System.out.println("Front Rollers Moving in Reverse");
-    } else if (IntakeJoystick.getRawButton(6) == true) {
-      // sushi out
+    } else if (IntakeJoystick.getRawButton(6)) {
+      // sushi + Conveyor out
       m_intakeSubsystem.reverseIntakeSushi();
       System.out.println("Sushi Rollers Moving in Reverse");
     } else {

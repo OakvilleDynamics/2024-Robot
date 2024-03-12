@@ -12,7 +12,6 @@ import frc.robot.subsystems.Conveyor;
 public class ConveyorCommand extends Command {
   private final Conveyor m_ConveyorSubsystem;
   // controller
-  // TODO: Change this to the correct controller
   private final Joystick ConveyorJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   public ConveyorCommand(Conveyor subsystem) {
@@ -25,10 +24,9 @@ public class ConveyorCommand extends Command {
 
   @Override
   public void execute() {
-    if (ConveyorJoystick.getRawButton(5) == true | ConveyorJoystick.getRawButton(3) == true) {
+    if (ConveyorJoystick.getRawButton(5 | 3 | 10)) {
       m_ConveyorSubsystem.intakeConveyor();
-    } else if (ConveyorJoystick.getRawButton(6) == true
-        | ConveyorJoystick.getRawButton(4) == true) {
+    } else if (ConveyorJoystick.getRawButton(6 | 4 | 9)) {
       m_ConveyorSubsystem.reverseConveyor();
       System.out.println("Conveyor Moving in Reverse");
     } else {
