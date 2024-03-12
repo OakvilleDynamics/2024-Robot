@@ -6,13 +6,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.Intake;
 
 public class IntakeCommand extends Command {
   private final Intake m_intakeSubsystem;
   // controller
   // TODO: Change this to the correct controller
-  private final Joystick IntakeJoystick = new Joystick(1);
+  private final Joystick IntakeJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   public IntakeCommand(Intake subsystem) {
     m_intakeSubsystem = subsystem;
@@ -24,13 +25,20 @@ public class IntakeCommand extends Command {
 
   @Override
   public void execute() {
-    // TODO: Change this to the correct button
-    if (IntakeJoystick.getRawButton(3) == true) {
-      m_intakeSubsystem.enableIntake();
-      // TODO: Change this to the correct button
+    if (IntakeJoystick.getRawButton(5) == true) {
+      // sushi in
+      m_intakeSubsystem.enableIntakeSushi();
+    } else if (IntakeJoystick.getRawButton(3) == true) {
+      // front in
+      m_intakeSubsystem.enableIntakeFront();
     } else if (IntakeJoystick.getRawButton(4) == true) {
-      m_intakeSubsystem.reverseIntake();
-      System.out.println("Intake Moving in Reverse");
+      // front out
+      m_intakeSubsystem.reverseIntakeFront();
+      System.out.println("Front Rollers Moving in Reverse");
+    } else if (IntakeJoystick.getRawButton(6) == true) {
+      // sushi out
+      m_intakeSubsystem.reverseIntakeSushi();
+      System.out.println("Sushi Rollers Moving in Reverse");
     } else {
       m_intakeSubsystem.disableIntake();
     }
@@ -39,7 +47,8 @@ public class IntakeCommand extends Command {
   @Override
   public void end(boolean interrupted) {
     m_intakeSubsystem.disableIntake();
-    m_intakeSubsystem.enableIntake();
+    m_intakeSubsystem.enableIntakeSushi();
+    m_intakeSubsystem.enableIntakeFront();
   }
 
   @Override

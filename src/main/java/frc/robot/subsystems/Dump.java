@@ -24,18 +24,18 @@ public class Dump extends SubsystemBase {
 
   /** Creates a new Pneumatics subsystem. */
   public Dump() {
-    System.out.println("Pneumatics initialized");
+    System.out.println("Pneumatic Dump initialized");
     SmartDashboard.putBoolean(getName(), false);
   }
 
   /** Opens the piston */
-  public void open() {
+  public void close() {
     doubleSolenoid.set(DoubleSolenoid.Value.kForward);
     SmartDashboard.putBoolean(getName(), true);
   }
 
   /** Closes the piston */
-  public void close() {
+  public void open() {
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     SmartDashboard.putBoolean(getName(), false);
   }

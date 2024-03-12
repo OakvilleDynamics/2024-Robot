@@ -40,13 +40,14 @@ public final class Constants {
   public static final class PneumaticsConstants {
     public static final class DumpConstants {
       // Uppy Downy solonoid
-      public static final int OUT = 1;
-      public static final int IN = 0;
+      public static final int OUT = 0;
+      public static final int IN = 15;
     }
 
     public static final class ElevatorConstants {
       // upy downy chain lift thing
-
+      public static final int IN = 3;
+      public static final int OUT = 8;
     }
   }
 
@@ -82,8 +83,8 @@ public final class Constants {
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
     public static final int CONVEYOR_MOTOR_2 = 2;
-    public static final boolean CONVEYOR_MOTOR_1_INVERTED = true;
-    public static final boolean CONVEYOR_MOTOR_2_INVERTED = false;
+    public static final boolean CONVEYOR_MOTOR_1_INVERTED = false;
+    public static final boolean CONVEYOR_MOTOR_2_INVERTED = true;
     public static final double CONVEYOR_MOTOR_SPEED = 0.38;
 
     // Flywheel Motors
@@ -91,7 +92,8 @@ public final class Constants {
     public static final int FLYWHEEL_MOTOR_2 = 4;
     public static final boolean FLYWHEEL_MOTOR_1_INVERTED = true;
     public static final boolean FLYWHEEL_MOTOR_2_INVERTED = false;
-    public static final double FLYWHEEL_MOTOR_SPEED = 1.0;
+    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 1.0;
+    public static final double FLYWHEEL_MOTOR_REDUCED_SPEED = 0.65;
     public static final double FLYWHEEL_MOTOR_SPEED_SLOW = 0.15;
   }
 }

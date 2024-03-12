@@ -23,13 +23,19 @@ public class FlyWheel extends SubsystemBase {
   }
 
   /** Sets the flywheel motors to 100% power. */
-  public void enableflywheelfast() {
-    flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED);
-    flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED);
+  public void enableflywheelfull() {
+    flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_FULL_SPEED);
+    flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_FULL_SPEED);
   }
 
-  /** Sets the flywheel motors to slow speed */
-  public void enableflywheelslow() {
+  /** Sets the flywheel speed to 65% power. */
+  public void enableflywheelreduced() {
+    flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_REDUCED_SPEED);
+    flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_REDUCED_SPEED);
+  }
+
+  /** Sets the flywheel motors to 15% */
+  public void enableflywheellow() {
     flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
     flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_SLOW);
   }
