@@ -33,6 +33,12 @@ public class ElevatorControl extends Command {
       ElevatorSubsystem.up();
     } else if (ElevatorJoystick.getThrottle() >= 0.85) {
       ElevatorSubsystem.down();
+    } else if (ElevatorJoystick.getRawButton(10)) {
+      ElevatorSubsystem.up();
+      System.out.println("BACKUP ELEVATOR ASCENT ACTIVATED");
+    } else if (ElevatorJoystick.getRawButton(9)) {
+      ElevatorSubsystem.down();
+      System.out.println("BACKUP ELEVATOR DESCENT ACTIVATED");
     }
   }
 
