@@ -28,21 +28,30 @@ public class Intake extends SubsystemBase {
     intakeFront.setIdleMode(IdleMode.kBrake);
   }
 
-  /** Sets the intake motors to 100% power. */
-  public void enableIntake() {
+  /** Sets the sushi motors to 100% power. */
+  public void enableIntakeSushi() {
     intakeSushi.set(MechanismConstants.INTAKE_MOTOR_SPEED_SUSHI);
+    // intakeFront.set(MechanismConstants.INTAKE_MOTOR_SPEED_FRONT);
+  }
+
+  /** Sets the front intake motors to 100% power. */
+  public void enableIntakeFront() {
     intakeFront.set(MechanismConstants.INTAKE_MOTOR_SPEED_FRONT);
   }
 
-  /** Sets the intake motors to 0% power. */
+  /** Sets both intake motors to 0% power. */
   public void disableIntake() {
     intakeSushi.set(0);
     intakeFront.set(0);
   }
 
-  /** Sets the intake motors to -100% power. (Reverse direction) */
-  public void reverseIntake() {
+  /** Sets the sushi motors to -100% power. (Reverse direction) */
+  public void reverseIntakeSushi() {
     intakeSushi.set(-MechanismConstants.INTAKE_MOTOR_SPEED_SUSHI);
+  }
+
+  /** Sets the front intake motors to -100% power (Reverse direction) */
+  public void reverseIntakeFront() {
     intakeFront.set(-MechanismConstants.INTAKE_MOTOR_SPEED_FRONT);
   }
 

@@ -23,7 +23,7 @@ public class Conveyor extends SubsystemBase {
   }
 
   /** Sets the Conveyor motors to 100% power. */
-  public void enableConveyor() {
+  public void intakeConveyor() {
     conveyorMotor1.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
     conveyorMotor2.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
   }

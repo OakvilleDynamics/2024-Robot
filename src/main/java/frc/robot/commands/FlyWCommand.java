@@ -6,13 +6,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.FlyWheel;
 
 public class FlyWCommand extends Command {
   private final FlyWheel m_FlyWSubsystem;
   // controller
   // TODO: Change this to the correct controller
-  private final Joystick ConveyorJoystick = new Joystick(1);
+  private final Joystick FlyWJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   public FlyWCommand(FlyWheel subsystem) {
     m_FlyWSubsystem = subsystem;
@@ -24,15 +25,15 @@ public class FlyWCommand extends Command {
 
   @Override
   public void execute() {
-    // TODO: Change this to the correct button
-    if (ConveyorJoystick.getRawButton(7) == true) {
-      m_FlyWSubsystem.enableflywheelfast();
-      // TODO: Change this to the correct button
-    } else if (ConveyorJoystick.getRawButton(8) == true) {
+    if (FlyWJoystick.getPOV() == (315 | 0 | 45)) {
+      m_FlyWSubsystem.enableflywheelfull();
+    } else if (FlyWJoystick.getPOV() == (225 | 180 | 135)) {
+      m_FlyWSubsystem.enableflywheellow();
+    } else if (FlyWJoystick.getRawButton(12)) {
+      m_FlyWSubsystem.enableflywheelreduced();
+    } else if (FlyWJoystick.getRawButton(11 | 7)) {
       m_FlyWSubsystem.reverseflywheel();
-      System.out.println("Conveyor Moving in Reverse");
-    } else if (ConveyorJoystick.getRawButton(9) == true) {
-      m_FlyWSubsystem.enableflywheelslow();
+      System.out.println("Flywheels Moving in Reverse");
     } else {
       m_FlyWSubsystem.disableflywheel();
     }

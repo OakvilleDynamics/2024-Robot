@@ -7,17 +7,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.subsystems.Dump;
+import frc.robot.subsystems.Elevator;
 
-public class DumpControl extends Command {
+public class ElevatorControl extends Command {
 
-  private static Dump DumpSubsystem;
+  private static Elevator ElevatorSubsystem;
 
-  private static Joystick DumpJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
+  private static Joystick ElevatorJoystick = new Joystick(OperatorConstants.COPILOT_CONTROLLER);
 
   /** Creates a new PneumaticsControl. */
-  public DumpControl(Dump subsystem) {
-    DumpSubsystem = subsystem;
+  public ElevatorControl(Elevator subsystem) {
+    ElevatorSubsystem = subsystem;
     addRequirements(subsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -29,10 +29,10 @@ public class DumpControl extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (DumpJoystick.getRawButton(1)) {
-      DumpSubsystem.open();
-    } else if (DumpJoystick.getRawButton(2)) {
-      DumpSubsystem.close();
+    if (ElevatorJoystick.getThrottle() <= -0.75) {
+      ElevatorSubsystem.up();
+    } else if (ElevatorJoystick.getThrottle() >= 0.75) {
+      ElevatorSubsystem.down();
     }
   }
 
