@@ -25,13 +25,15 @@ public class FlyWCommand extends Command {
 
   @Override
   public void execute() {
-    if (FlyWJoystick.getPOV() == (315 | 0 | 45)) {
+    if (FlyWJoystick.getPOV() == 315 || FlyWJoystick.getPOV() == 0 || FlyWJoystick.getPOV() == 45) {
       m_FlyWSubsystem.enableflywheelfull();
-    } else if (FlyWJoystick.getPOV() == (225 | 180 | 135)) {
+    } else if (FlyWJoystick.getPOV() == 225
+        || FlyWJoystick.getPOV() == 180
+        || FlyWJoystick.getPOV() == 135) {
       m_FlyWSubsystem.enableflywheellow();
     } else if (FlyWJoystick.getRawButton(12)) {
       m_FlyWSubsystem.enableflywheelreduced();
-    } else if (FlyWJoystick.getRawButton(11 | 7)) {
+    } else if (FlyWJoystick.getRawButton(11) || FlyWJoystick.getRawButton(7)) {
       m_FlyWSubsystem.reverseflywheel();
       System.out.println("Flywheels Moving in Reverse");
     } else {
