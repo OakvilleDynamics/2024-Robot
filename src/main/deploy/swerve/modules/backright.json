@@ -1,7 +1,7 @@
 {
   "location": {
-    "front": -11,
-    "left": -11
+    "front": -10.5,
+    "left": -10.625
   },
   "absoluteEncoderOffset": 299.267578125,
   "drive": {

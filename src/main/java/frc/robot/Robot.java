@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix6.SignalLogger;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.Timer;
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.Constants.HardwareConstants;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import org.littletonrobotics.junction.LogFileUtil;
 import org.littletonrobotics.junction.LoggedRobot;
 import org.littletonrobotics.junction.Logger;
@@ -71,19 +73,22 @@ public class Robot extends LoggedRobot {
         break;
     }
 
+    Logger.addDataReceiver(new NT4Publisher());
     if (isReal()) {
-      Logger.addDataReceiver(new NT4Publisher());
       LoggedPowerDistribution.getInstance(HardwareConstants.REV_PDH_ID, ModuleType.kRev);
       Logger.registerURCL(URCL.startExternal());
-    } else {
-      setUseTiming(false); // Run as fast as possible
-      String logPath = LogFileUtil.findReplayLog();
-      if (logPath != null) {
-        Logger.setReplaySource(new WPILOGReader(logPath));
+      if (Paths.get("/U").getParent() != null) {
+        Logger.addDataReceiver(new WPILOGWriter());
+        SignalLogger.start();
       } else {
-        Logger.addDataReceiver(new NT4Publisher());
+        setUseTiming(false);
+        try {
+          String logPath = LogFileUtil.findReplayLog();
+          Logger.setReplaySource(new WPILOGReader(logPath));
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
-      Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
     }
 
     // Start logging
