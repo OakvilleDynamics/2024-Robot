@@ -40,14 +40,14 @@ public final class Constants {
   public static final class PneumaticsConstants {
     public static final class DumpConstants {
       // Uppy Downy solonoid
-      public static final int OUT = 0;
-      public static final int IN = 15;
+      public static final int OUT = 15;
+      public static final int IN = 13;
     }
 
     public static final class ElevatorConstants {
       // upy downy chain lift thing
-      public static final int IN = 3;
-      public static final int OUT = 8;
+      public static final int IN = 10;
+      public static final int OUT = 11;
     }
   }
 
