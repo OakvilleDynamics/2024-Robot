@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -60,7 +61,7 @@ public class RobotContainer {
   private final FlyWheel FlyWheel = new FlyWheel();
   private final Elevator elevator = new Elevator();
 
-  LoggedDashboardChooser<Command> autoChooser;
+  private final LoggedDashboardChooser<Command> autoChooser;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -76,6 +77,12 @@ public class RobotContainer {
 
     autoChooser =
         new LoggedDashboardChooser<>("Autonomous Chooser", AutoBuilder.buildAutoChooser());
+
+    autoChooser.addDefaultOption("Do nothing", null);
+    autoChooser.addOption("BL", new PathPlannerAuto("BL Path"));
+    autoChooser.addOption("BR", new PathPlannerAuto("BR Path"));
+    autoChooser.addOption("RL", new PathPlannerAuto("RR Path"));
+    autoChooser.addOption("RR", new PathPlannerAuto("RR Path"));
 
     final AbsoluteDriveAdv closedAbsoluteDriveAdv =
         new AbsoluteDriveAdv(
@@ -195,7 +202,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand(autoChooser.toString(), false);
+    return drivebase.getAutonomousCommand(autoChooser.get().getName(), false);
   }
 
   public void setDriveMode() {
