@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.auto.AutoBuilder;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -59,7 +60,7 @@ public class RobotContainer {
   private final FlyWheel FlyWheel = new FlyWheel();
   private final Elevator elevator = new Elevator();
 
-  LoggedDashboardChooser<String> autoChooser = new LoggedDashboardChooser<>("Auto Chooser");
+  LoggedDashboardChooser<Command> autoChooser;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -72,6 +73,9 @@ public class RobotContainer {
 
     // Configure the trigger bindings
     configureBindings();
+
+    autoChooser =
+        new LoggedDashboardChooser<>("Autonomous Chooser", AutoBuilder.buildAutoChooser());
 
     final AbsoluteDriveAdv closedAbsoluteDriveAdv =
         new AbsoluteDriveAdv(
