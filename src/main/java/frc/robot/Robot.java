@@ -5,6 +5,8 @@
 package frc.robot;
 
 import com.ctre.phoenix6.SignalLogger;
+
+import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.Timer;
@@ -89,6 +91,7 @@ public class Robot extends LoggedRobot {
           e.printStackTrace();
         }
       }
+      PortForwarder.add(5800, "photonvision-", 5800);
     }
 
     // Start logging
