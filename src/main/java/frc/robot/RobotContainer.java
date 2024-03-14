@@ -32,6 +32,7 @@ import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
+import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -57,6 +58,8 @@ public class RobotContainer {
   private final Conveyor conveyor = new Conveyor();
   private final FlyWheel FlyWheel = new FlyWheel();
   private final Elevator elevator = new Elevator();
+
+  LoggedDashboardChooser<String> autoChooser = new LoggedDashboardChooser<>("Auto Chooser");
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -188,7 +191,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("New Path", true);
+    return drivebase.getAutonomousCommand(autoChooser.toString(), false);
   }
 
   public void setDriveMode() {

@@ -30,9 +30,9 @@ public class FlyWCommand extends Command {
     } else if (FlyWJoystick.getPOV() == 225
         || FlyWJoystick.getPOV() == 180
         || FlyWJoystick.getPOV() == 135) {
-          m_FlyWSubsystem.enableflywheelreduced();
-        } else if (FlyWJoystick.getRawButton(12)) {
-          m_FlyWSubsystem.enableflywheellow();
+      m_FlyWSubsystem.enableflywheelreduced();
+    } else if (FlyWJoystick.getRawButton(12)) {
+      m_FlyWSubsystem.enableflywheellow();
     } else if (FlyWJoystick.getRawButton(11) || FlyWJoystick.getRawButton(7)) {
       m_FlyWSubsystem.reverseflywheel();
       System.out.println("Flywheels Moving in Reverse");
