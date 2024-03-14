@@ -91,7 +91,8 @@ public class Robot extends LoggedRobot {
           e.printStackTrace();
         }
       }
-      PortForwarder.add(5800, "photonvision-", 5800);
+      PortForwarder.add(5800, "photonvision-limelight", 5800);
+      PortForwarder.add(5800, "photonvision-rpi", 5800);
     }
 
     // Start logging
