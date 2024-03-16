@@ -201,6 +201,9 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    if (autoChooser.get() == null) {
+      doNothing();
+    }
     // An example command will be run in autonomous
     return drivebase.getAutonomousCommand(autoChooser.get().getName(), false);
   }
@@ -211,5 +214,11 @@ public class RobotContainer {
 
   public void setMotorBrake(boolean brake) {
     drivebase.setMotorBrake(brake);
+  }
+
+  public Command doNothing() {
+    return new Command() {
+      // lmao
+    };
   }
 }

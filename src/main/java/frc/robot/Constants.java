@@ -78,7 +78,7 @@ public final class Constants {
     public static final boolean INTAKE_MOTOR_SUSHI_INVERTED = true;
     public static final boolean INTAKE_MOTOR_FRONT_INVERTED = false;
     public static final double INTAKE_MOTOR_SPEED_FRONT = 0.1;
-    public static final double INTAKE_MOTOR_SPEED_SUSHI = 0.9;
+    public static final double INTAKE_MOTOR_SPEED_SUSHI = 1;
 
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
@@ -92,7 +92,7 @@ public final class Constants {
     public static final int FLYWHEEL_MOTOR_2 = 4;
     public static final boolean FLYWHEEL_MOTOR_1_INVERTED = true;
     public static final boolean FLYWHEEL_MOTOR_2_INVERTED = false;
-    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 1.0;
+    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 0.51;
     public static final double FLYWHEEL_MOTOR_REDUCED_SPEED = 0.20;
     public static final double FLYWHEEL_MOTOR_SPEED_SLOW = 0.15;
   }
