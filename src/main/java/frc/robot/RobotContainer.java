@@ -202,6 +202,9 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    if (autoChooser.get() == null) {
+      doNothing();
+    }
     // An example command will be run in autonomous
     if (autoChooser.get() == null) {
       return doNothing();
