@@ -32,6 +32,7 @@ import frc.robot.subsystems.Dump;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
@@ -65,8 +66,10 @@ public class RobotContainer {
 
   private final LoggedDashboardChooser<Command> autoChooser;
 
-  private final PhotonCamera limeLight = new PhotonCamera("photonvision-limelight");
-  private final PhotonCamera rpi = new PhotonCamera("photonvision-rpi");
+  private final Vision vision = new Vision();
+  private final PhotonCamera limeLight = vision.getLimelight();
+  private final PhotonCamera intakeCamera = vision.getIntakeCamera();
+  private final PhotonCamera conveyorCamera = vision.getConveyorCamera();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
