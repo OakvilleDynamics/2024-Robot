@@ -48,7 +48,17 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "shoot",
+      "name": "shootConveyor",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "shootFlyWheel",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
