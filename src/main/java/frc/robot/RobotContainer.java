@@ -193,7 +193,7 @@ public class RobotContainer {
 
     new JoystickButton(driverXbox, 1).onTrue((new InstantCommand(drivebase::zeroGyro)));
     new JoystickButton(driverXbox, 3)
-        .onTrue(Commands.deferredProxy(() -> drivebase.aimAtTarget(limeLight)));
+        .whileTrue(Commands.deferredProxy(() -> drivebase.aimAtTarget(limeLight)));
     new JoystickButton(driverXbox, 2)
         .whileTrue(
             Commands.deferredProxy(

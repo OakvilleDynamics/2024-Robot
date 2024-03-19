@@ -5,6 +5,7 @@ import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
+import frc.robot.Constants.VisionConstants;
 import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
@@ -19,7 +20,9 @@ public class Vision {
   public Vision() {
     aprilTagFieldLayout = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
 
-    limelight = new PhotonCamera("limelight");
+    limelight = new PhotonCamera(VisionConstants.LimeLight.LIMELIGHT_NAME);
+    conveyorCamera = new PhotonCamera(VisionConstants.ConveyorCamera.CONVEYOR_NAME);
+    conveyorCamera = new PhotonCamera(VisionConstants.IntakeCamera.INTAKE_NAME);
     // Cam mounted facing forward, half a meter forward of center, half a meter up from center.
     Transform3d robotToLimelight =
         new Transform3d(new Translation3d(0.5, 0.0, 0.5), new Rotation3d(0, 0, 0));
