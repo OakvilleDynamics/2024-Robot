@@ -94,4 +94,27 @@ public final class Constants {
     public static final double FLYWHEEL_MOTOR_REDUCED_SPEED = 0.20;
     public static final double FLYWHEEL_MOTOR_SPEED_SLOW = 0.15;
   }
+
+  public class VisionConstants {
+    public class LimeLight {
+      public static final String LIMELIGHT_TABLE = "limelight";
+      public static final double LIMELIGHT_HEIGHT = 0.0; // inches to meters
+      public static final double LIMELIGHT_ANGLE = 0.0; // radians
+      public static final double LIMELIGHT_DISTANCE = 0.0; // inches to meters
+    }
+
+    public class IntakeCamera {
+      public static final String INTAKE_TABLE = "intake";
+      public static final double INTAKE_HEIGHT = 0.0; // inches to meters
+      public static final double INTAKE_ANGLE = 0.0; // radians
+      public static final double INTAKE_DISTANCE = 0.0; // inches to meters
+    }
+
+    public class ConveyorCamera {
+      public static final String CONVEYOR_TABLE = "conveyor";
+      public static final double CONVEYOR_HEIGHT = 0.0; // inches to meters
+      public static final double CONVEYOR_ANGLE = 0.0; // radians
+      public static final double CONVEYOR_DISTANCE = 0.0; // inches to meters
+    }
+  }
 }

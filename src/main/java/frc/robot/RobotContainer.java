@@ -192,7 +192,8 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
     new JoystickButton(driverXbox, 1).onTrue((new InstantCommand(drivebase::zeroGyro)));
-    new JoystickButton(driverXbox, 3).onTrue(Commands.deferredProxy(() -> drivebase.aimAtTarget(limeLight)));
+    new JoystickButton(driverXbox, 3)
+        .onTrue(Commands.deferredProxy(() -> drivebase.aimAtTarget(limeLight)));
     new JoystickButton(driverXbox, 2)
         .whileTrue(
             Commands.deferredProxy(
