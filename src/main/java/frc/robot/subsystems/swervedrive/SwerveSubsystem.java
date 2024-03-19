@@ -7,7 +7,6 @@ package frc.robot.subsystems.swervedrive;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.path.PathConstraints;
-import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
@@ -131,9 +130,8 @@ public class SwerveSubsystem extends SubsystemBase {
   /**
    * Get the path follower with events.
    *
-   * @param pathName PathPlanner path name.
-   * @param setOdomToStart Set the odometry position to the start of the path.
-   * @return {@link AutoBuilder#followPath(PathPlannerPath)} path command.
+   * @param pathName Name of the path to follow.
+   * @return PathPlannerPath with events.
    */
   public Command getAutonomousCommand(String pathName) {
     // Load the path you want to follow using its name in the GUI
