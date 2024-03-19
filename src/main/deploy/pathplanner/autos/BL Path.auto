@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.541771563143822,
-      "y": 2.430613727257548
+      "x": 0.71583277069688,
+      "y": 7.110045901003483
     },
-    "rotation": -179.1864566650106
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RL Path"
+            "pathName": "BL Path"
           }
         }
       ]
