@@ -36,6 +36,8 @@ public class FlyWCommand extends Command {
     } else if (FlyWJoystick.getRawButton(11) || FlyWJoystick.getRawButton(7)) {
       m_FlyWSubsystem.reverseflywheel();
       System.out.println("Flywheels Moving in Reverse");
+    } else if (FlyWJoystick.getRawButton(9)) {
+      m_FlyWSubsystem.enableflywheelONEHUNDRED();
     } else {
       m_FlyWSubsystem.disableflywheel();
     }

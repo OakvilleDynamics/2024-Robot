@@ -56,4 +56,9 @@ public class FlyWheel extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+  public void enableflywheelONEHUNDRED() {
+    flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_ONEHUNDRED);
+    flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_ONEHUNDRED);
+  }
 }

@@ -29,9 +29,9 @@ public class DumpControl extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (DumpJoystick.getRawButton(1)) {
+    if (DumpJoystick.getRawButton(2)) {
       DumpSubsystem.open();
-    } else if (DumpJoystick.getRawButton(2)) {
+    } else if (DumpJoystick.getRawButton(1)) {
       DumpSubsystem.close();
     }
   }

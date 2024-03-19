@@ -30,7 +30,7 @@ public class ConveyorCommand extends Command {
       m_ConveyorSubsystem.intakeConveyor();
     } else if (ConveyorJoystick.getRawButton(6)
         || ConveyorJoystick.getRawButton(4)
-        || ConveyorJoystick.getRawButton(9)) {
+        || ConveyorJoystick.getRawButton(8)) {
       m_ConveyorSubsystem.reverseConveyor();
       System.out.println("Conveyor Moving in Reverse");
     } else {
