@@ -1,0 +1,55 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.4217011759439209,
+      "y": 7.400066486593781
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "bl Path"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootConveyor"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootFlyWheel"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "dumpBed"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "bl2 Path"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

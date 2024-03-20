@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 15.146419352667763,
+      "y": 5.578111669043852
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RS Path"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootConveyor"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shootFlyWheel"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
