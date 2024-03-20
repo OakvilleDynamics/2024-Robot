@@ -97,24 +97,33 @@ public final class Constants {
 
   public class VisionConstants {
     public class LimeLight {
-      public static final String LIMELIGHT_NAME = "LIMELIGHT";
-      public static final double LIMELIGHT_HEIGHT = 0.0; // inches to meters
-      public static final double LIMELIGHT_ANGLE = 0.0; // radians
-      public static final double LIMELIGHT_DISTANCE = 0.0; // inches to meters
+      public static final String NAME = "LIMELIGHT";
+      public static final double LENGTH = Units.inchesToMeters(-12.5); // inches to meters
+      public static final double WIDTH = Units.inchesToMeters(0.0); // inches to meters
+      public static final double HEIGHT = Units.inchesToMeters(-23.25); // inches to meters
+      public static final double ROLL = Units.degreesToRadians(0.0); // degrees to radians
+      public static final double PITCH = Units.degreesToRadians(0.0); // degrees to radians
+      public static final double YAW = Units.degreesToRadians(180.0); // degrees to radians
     }
 
     public class IntakeCamera {
-      public static final String INTAKE_NAME = "INTAKE-CAM";
-      public static final double INTAKE_HEIGHT = 0.0; // inches to meters
-      public static final double INTAKE_ANGLE = 0.0; // radians
-      public static final double INTAKE_DISTANCE = 0.0; // inches to meters
+      public static final String NAME = "INTAKE-CAM";
+      public static final double LENGTH = Units.inchesToMeters(-11.75); // inches to meters
+      public static final double WIDTH = Units.inchesToMeters(0.0); // inches to meters
+      public static final double HEIGHT = Units.inchesToMeters(-12.5); // inches to meters
+      public static final double ROLL = Units.degreesToRadians(0.0); // degrees to radians
+      public static final double PITCH = Units.degreesToRadians(-20.0); // degrees to radians
+      public static final double YAW = Units.degreesToRadians(0.0); // degrees to radians
     }
 
     public class ConveyorCamera {
-      public static final String CONVEYOR_NAME = "CONVEYOR-CAM";
-      public static final double CONVEYOR_HEIGHT = 0.0; // inches to meters
-      public static final double CONVEYOR_ANGLE = 0.0; // radians
-      public static final double CONVEYOR_DISTANCE = 0.0; // inches to meters
+      public static final String NAME = "CONVEYOR-CAM";
+      public static final double LENGTH = Units.inchesToMeters(-5.5); // inches to meters
+      public static final double WIDTH = Units.inchesToMeters(0.0); // inches to meters
+      public static final double HEIGHT = Units.inchesToMeters(-13.5); // inches to meters
+      public static final double ROLL = Units.degreesToRadians(0.0); // degrees to radians
+      public static final double PITCH = Units.degreesToRadians(90.0); // degrees to radians
+      public static final double YAW = Units.degreesToRadians(180.0); // degrees to radians
     }
   }
 }
