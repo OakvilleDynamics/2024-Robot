@@ -109,7 +109,7 @@ public class SwerveSubsystem extends SubsystemBase {
                 swerveDrive.swerveController.config.headingPIDF.i,
                 swerveDrive.swerveController.config.headingPIDF.d),
             // Rotation PID constants
-            4.5,
+            4.6,
             // Max module speed, in m/s
             swerveDrive.swerveDriveConfiguration.getDriveBaseRadiusMeters(),
             // Drive base radius in meters. Distance from robot center to furthest module.

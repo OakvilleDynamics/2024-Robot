@@ -2,21 +2,15 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.38839644630856207,
-      "y": 7.3322348354098414
+      "x": 0.7275269251393154,
+      "y": 4.268366371490578
     },
-    "rotation": 0
+    "rotation": 58.172553423326896
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "path",
-          "data": {
-            "pathName": "bl Path"
-          }
-        },
         {
           "type": "named",
           "data": {
@@ -30,12 +24,6 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "dumpBed"
-          }
-        },
-        {
           "type": "wait",
           "data": {
             "waitTime": 2.0
@@ -44,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "bl2 Path"
+            "pathName": "BLS Path"
           }
         }
       ]

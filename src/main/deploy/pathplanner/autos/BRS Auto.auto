@@ -2,21 +2,15 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 16.29244648802688,
-      "y": 5.557362183607978
+      "x": 0.79769185179396,
+      "y": 4.572414386994017
     },
-    "rotation": 0
+    "rotation": -62.59242456218156
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "path",
-          "data": {
-            "pathName": "BS Path"
-          }
-        },
         {
           "type": "named",
           "data": {
@@ -33,6 +27,12 @@
           "type": "wait",
           "data": {
             "waitTime": 2.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "BRS Path"
           }
         }
       ]

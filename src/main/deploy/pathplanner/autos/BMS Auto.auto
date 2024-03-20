@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.38839644630856207,
-      "y": 7.3322348354098414
+      "x": 5.849566570928014,
+      "y": 4.315142989260338
     },
     "rotation": 0
   },
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "bl Path"
+            "pathName": "BS Path"
           }
         },
         {
@@ -30,21 +30,9 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "dumpBed"
-          }
-        },
-        {
           "type": "wait",
           "data": {
             "waitTime": 2.0
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "bl2 Path"
           }
         }
       ]
