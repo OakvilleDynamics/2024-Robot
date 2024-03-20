@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MechanismConstants;
@@ -24,8 +23,11 @@ public class FlyWheel extends SubsystemBase {
     flywheelMotor2.setInverted(MechanismConstants.FLYWHEEL_MOTOR_2_INVERTED);
   }
 
-  /** Sets the flywheel motors to 100% power. 
-   * @return */
+  /**
+   * Sets the flywheel motors to 100% power.
+   *
+   * @return
+   */
   public Command enableflywheelfull() {
     flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_FULL_SPEED);
     flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_FULL_SPEED);
@@ -60,8 +62,8 @@ public class FlyWheel extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-public Object shootCommand() {
+  public Object shootCommand() {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'shootCommand'");
-}
+  }
 }
