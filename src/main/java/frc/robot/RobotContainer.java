@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -32,6 +34,7 @@ import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
+import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -44,6 +47,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase =
       new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
+
   // CommandJoystick rotationController = new CommandJoystick(1);
   // Replace with CommandPS4Controller or CommandJoystick if needed
   CommandJoystick driverController = new CommandJoystick(1);
@@ -58,6 +62,8 @@ public class RobotContainer {
   private final FlyWheel FlyWheel = new FlyWheel();
   private final Elevator elevator = new Elevator();
 
+  private final LoggedDashboardChooser<Command> autoChooser;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
@@ -69,6 +75,15 @@ public class RobotContainer {
 
     // Configure the trigger bindings
     configureBindings();
+
+    autoChooser =
+        new LoggedDashboardChooser<>("Autonomous Chooser", AutoBuilder.buildAutoChooser());
+
+    autoChooser.addDefaultOption("Do nothing", null);
+    autoChooser.addOption("BL", new PathPlannerAuto("BL Path"));
+    autoChooser.addOption("BR", new PathPlannerAuto("BR Path"));
+    autoChooser.addOption("RL", new PathPlannerAuto("RR Path"));
+    autoChooser.addOption("RR", new PathPlannerAuto("RR Path"));
 
     final AbsoluteDriveAdv closedAbsoluteDriveAdv =
         new AbsoluteDriveAdv(
@@ -187,8 +202,14 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    if (autoChooser.get() == null) {
+      doNothing();
+    }
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("New Path", true);
+    if (autoChooser.get() == null) {
+      return doNothing();
+    }
+    return drivebase.getAutonomousCommand(autoChooser.get().getName());
   }
 
   public void setDriveMode() {
@@ -197,5 +218,11 @@ public class RobotContainer {
 
   public void setMotorBrake(boolean brake) {
     drivebase.setMotorBrake(brake);
+  }
+
+  public Command doNothing() {
+    Command nothing = new InstantCommand();
+    nothing.setName("NOTHING");
+    return nothing;
   }
 }
