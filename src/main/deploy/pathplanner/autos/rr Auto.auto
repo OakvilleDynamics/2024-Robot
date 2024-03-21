@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "rr Path"
+            "pathName": "RR Path"
           }
         },
         {
@@ -44,7 +44,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "rr2 Path"
+            "pathName": "RR2 Path"
           }
         }
       ]

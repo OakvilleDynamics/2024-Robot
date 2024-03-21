@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "bl Path"
+            "pathName": "BL Path"
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "bl2 Path"
+            "pathName": "BL2 Path"
           }
         }
       ]
