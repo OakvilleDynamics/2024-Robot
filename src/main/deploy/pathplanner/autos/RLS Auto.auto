@@ -2,25 +2,25 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.38839644630856207,
-      "y": 7.3322348354098414
+      "x": 15.965010163634727,
+      "y": 6.6773621866284305
     },
-    "rotation": 0
+    "rotation": -57.5288077091511
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "bl Path"
+            "name": "shootConveyor"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Dump bed "
+            "name": "shootFlyWheel"
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "bl2 Path"
+            "pathName": "RLS Path"
           }
         }
       ]
