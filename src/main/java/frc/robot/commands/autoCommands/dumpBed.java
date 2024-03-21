@@ -5,20 +5,33 @@
 package frc.robot.commands.autoCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.Dump;
 
 public class dumpBed extends Command {
   /** Creates a new dumpBed. */
-  public dumpBed() {
+  private final Dump m_dump;
+
+  private boolean m_finished = false;
+
+  public dumpBed(Dump dump) {
+    m_dump = dump;
+    addRequirements(m_dump);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_finished = false;
+    m_dump.openThenClose();
+    m_dump.openThenClose();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_finished = true;
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +40,6 @@ public class dumpBed extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_finished;
   }
 }
