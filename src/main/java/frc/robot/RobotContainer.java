@@ -33,9 +33,11 @@ import frc.robot.subsystems.Dump;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
+import org.photonvision.PhotonCamera;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -64,6 +66,11 @@ public class RobotContainer {
   private final Elevator elevator = new Elevator();
 
   private final LoggedDashboardChooser<Command> autoChooser;
+
+  private final Vision vision = new Vision();
+  private final PhotonCamera limeLight = vision.getLimelight();
+  private final PhotonCamera intakeCamera = vision.getIntakeCamera();
+  private final PhotonCamera conveyorCamera = vision.getConveyorCamera();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -188,15 +195,15 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
     new JoystickButton(driverXbox, 1).onTrue((new InstantCommand(drivebase::zeroGyro)));
-    new JoystickButton(driverXbox, 3).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
+    new JoystickButton(driverXbox, 3)
+        .whileTrue(Commands.deferredProxy(() -> drivebase.aimAtTarget(limeLight)));
     new JoystickButton(driverXbox, 2)
         .whileTrue(
             Commands.deferredProxy(
                 () ->
                     drivebase.driveToPose(
                         new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))));
-    //    new JoystickButton(driverXbox, 3).whileTrue(new RepeatCommand(new
-    // InstantCommand(drivebase::lock, drivebase)));
+    new JoystickButton(driverXbox, 4).whileTrue(new InstantCommand(drivebase::lock, drivebase));
   }
 
   /**
