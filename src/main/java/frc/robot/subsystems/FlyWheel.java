@@ -61,4 +61,9 @@ public class FlyWheel extends SubsystemBase {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'shootCommand'");
   }
+
+  public void fastflywheel() {
+    flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_100);
+    flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_100);
+  }
 }

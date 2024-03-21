@@ -28,9 +28,7 @@ public class ConveyorCommand extends Command {
         || ConveyorJoystick.getRawButton(3)
         || ConveyorJoystick.getRawButton(10)) {
       m_ConveyorSubsystem.intakeConveyor();
-    } else if (ConveyorJoystick.getRawButton(6)
-        || ConveyorJoystick.getRawButton(4)
-        || ConveyorJoystick.getRawButton(9)) {
+    } else if (ConveyorJoystick.getRawButton(6) || ConveyorJoystick.getRawButton(4)) {
       m_ConveyorSubsystem.reverseConveyor();
       System.out.println("Conveyor Moving in Reverse");
     } else {
