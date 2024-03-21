@@ -5,7 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -26,6 +26,7 @@ import frc.robot.commands.DumpControl;
 import frc.robot.commands.ElevatorControl;
 import frc.robot.commands.FlyWCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.autoCommands.dumpBed;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Dump;
@@ -79,7 +80,13 @@ public class RobotContainer {
     conveyor.setDefaultCommand(new ConveyorCommand(conveyor));
     FlyWheel.setDefaultCommand(new FlyWCommand(FlyWheel));
     elevator.setDefaultCommand(new ElevatorControl(elevator));
-
+    // Register Named Commands
+    NamedCommands.registerCommand(
+        "shootConveyor", new InstantCommand(() -> conveyor.intakeConveyor()));
+    NamedCommands.registerCommand(
+        "shootFlyWheel", new InstantCommand(() -> FlyWheel.enableflywheelfull()));
+    NamedCommands.registerCommand("dump", new InstantCommand(() -> dump.open()));
+    NamedCommands.registerCommand("Dump bed", new dumpBed(dump));
     // Configure the trigger bindings
     configureBindings();
 
@@ -87,10 +94,6 @@ public class RobotContainer {
         new LoggedDashboardChooser<>("Autonomous Chooser", AutoBuilder.buildAutoChooser());
 
     autoChooser.addDefaultOption("Do nothing", null);
-    autoChooser.addOption("BL", new PathPlannerAuto("BL Path"));
-    autoChooser.addOption("BR", new PathPlannerAuto("BR Path"));
-    autoChooser.addOption("RL", new PathPlannerAuto("RR Path"));
-    autoChooser.addOption("RR", new PathPlannerAuto("RR Path"));
 
     final AbsoluteDriveAdv closedAbsoluteDriveAdv =
         new AbsoluteDriveAdv(

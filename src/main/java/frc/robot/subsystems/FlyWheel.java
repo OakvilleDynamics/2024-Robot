@@ -56,4 +56,9 @@ public class FlyWheel extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+  public Object shootCommand() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'shootCommand'");
+  }
 }
