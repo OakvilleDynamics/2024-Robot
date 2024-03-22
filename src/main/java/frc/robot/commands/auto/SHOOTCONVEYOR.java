@@ -5,20 +5,32 @@
 package frc.robot.commands.auto;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.Conveyor;
 
-public class SHOOT extends Command {
+public class SHOOTCONVEYOR extends Command {
   /** Creates a new SHOOT. */
-  public SHOOT() {
+  private final Conveyor m_conveyor;
+
+  private boolean m_finished = false;
+
+  public SHOOTCONVEYOR(Conveyor conveyor) {
+    m_conveyor = conveyor;
+    addRequirements(m_conveyor);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_finished = false;
+    m_conveyor.intakeConveyor();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_finished = true;
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +39,6 @@ public class SHOOT extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_finished;
   }
 }
