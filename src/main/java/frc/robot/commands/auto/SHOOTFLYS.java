@@ -23,7 +23,7 @@ public class SHOOTFLYS extends Command {
   @Override
   public void initialize() {
     m_finished = false;
-    m_flywheel.FLYWHEEL_MOTOR_FULL_SPEED();
+    m_flywheel.enableflywheelfull();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

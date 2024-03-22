@@ -45,9 +45,9 @@ public class Conveyor extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
-  public Command shootCommand() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'shootCommand'");
+  
+  public void SHOOTCONVEYOR(){
+    conveyorMotor1.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
+    conveyorMotor2.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
   }
 }
