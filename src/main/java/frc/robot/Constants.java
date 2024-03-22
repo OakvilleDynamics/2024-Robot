@@ -44,8 +44,8 @@ public final class Constants {
 
     public static final class ElevatorConstants {
       // upy downy chain lift thing
-      public static final int IN = 10;
-      public static final int OUT = 11;
+      public static final int IN = 11;
+      public static final int OUT = 10;
     }
   }
 
