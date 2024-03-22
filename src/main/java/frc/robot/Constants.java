@@ -89,7 +89,7 @@ public final class Constants {
     public static final int FLYWHEEL_MOTOR_2 = 4;
     public static final boolean FLYWHEEL_MOTOR_1_INVERTED = true;
     public static final boolean FLYWHEEL_MOTOR_2_INVERTED = false;
-    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 0.51;
+    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 0.55;
     public static final double FLYWHEEL_MOTOR_REDUCED_SPEED = 0.20;
     public static final double FLYWHEEL_MOTOR_SPEED_SLOW = 0.15;
     public static final double FLYWHEEL_MOTOR_SPEED_100 = 1;
