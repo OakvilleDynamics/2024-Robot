@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MechanismConstants;
 
@@ -45,8 +44,8 @@ public class Conveyor extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  
-  public void SHOOTCONVEYOR(){
+
+  public void SHOOTCONVEYOR() {
     conveyorMotor1.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
     conveyorMotor2.set(MechanismConstants.CONVEYOR_MOTOR_SPEED);
   }

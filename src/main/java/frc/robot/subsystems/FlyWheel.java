@@ -61,9 +61,9 @@ public class FlyWheel extends SubsystemBase {
     flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_100);
     flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_SPEED_100);
   }
-  public void SHOOTFLYS(){
+
+  public void SHOOTFLYS() {
     flywheelMotor1.set(MechanismConstants.FLYWHEEL_MOTOR_FULL_SPEED);
     flywheelMotor2.set(MechanismConstants.FLYWHEEL_MOTOR_FULL_SPEED);
   }
 }
-
