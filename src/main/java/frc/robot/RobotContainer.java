@@ -26,6 +26,8 @@ import frc.robot.commands.DumpControl;
 import frc.robot.commands.ElevatorControl;
 import frc.robot.commands.FlyWCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.auto.SHOOTCONVEYOR;
+import frc.robot.commands.auto.SHOOTFLYS;
 import frc.robot.commands.autoCommands.dumpBed;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
 import frc.robot.subsystems.Conveyor;
@@ -72,6 +74,9 @@ public class RobotContainer {
   private final PhotonCamera intakeCamera = vision.getIntakeCamera();
   private final PhotonCamera conveyorCamera = vision.getConveyorCamera();
 
+  private final SHOOTCONVEYOR shootconveyorcmd = new SHOOTCONVEYOR(conveyor);
+  private final SHOOTFLYS shootflyscmd = new SHOOTFLYS(FlyWheel);
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
@@ -87,6 +92,8 @@ public class RobotContainer {
         "shootFlyWheel", new InstantCommand(() -> FlyWheel.enableflywheelfull()));
     NamedCommands.registerCommand("dump", new InstantCommand(() -> dump.open()));
     NamedCommands.registerCommand("Dump bed", new dumpBed(dump));
+    NamedCommands.registerCommand("SHOOTCONVEYOR", shootconveyorcmd);
+    NamedCommands.registerCommand("SHOOTFLYS", shootflyscmd);
     // Configure the trigger bindings
     configureBindings();
 
