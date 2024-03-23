@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.814715573093117,
-      "y": 6.5616559402132895
+      "x": 16.233852186014232,
+      "y": 4.176913142558679
     },
-    "rotation": -59.534455080540134
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RLS Path"
+            "pathName": "Straight Red Source Path"
           }
         }
       ]
