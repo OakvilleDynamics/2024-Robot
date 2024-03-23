@@ -82,9 +82,9 @@ public class RobotContainer {
     elevator.setDefaultCommand(new ElevatorControl(elevator));
     // Register Named Commands
     NamedCommands.registerCommand(
-        "SHOOOTCONVEYOR", new InstantCommand(() -> conveyor.intakeConveyor()));
+        "shootConveyor", new InstantCommand(() -> conveyor.intakeConveyor()));
     NamedCommands.registerCommand(
-        "SHOOTFLYS", new InstantCommand(() -> FlyWheel.enableflywheelfull()));
+        "shootFlyWheel", new InstantCommand(() -> FlyWheel.enableflywheelfull()));
     NamedCommands.registerCommand("dump", new InstantCommand(() -> dump.open()));
     NamedCommands.registerCommand("Dump bed", new dumpBed(dump));
     // Configure the trigger bindings
