@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 0.400090600751002,
-      "y": 1.9997004096572308
+      "y": 4.209895599278378
     },
-    "rotation": 0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BR Path"
+            "pathName": "BRS Path"
           }
         }
       ]
