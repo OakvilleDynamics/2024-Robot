@@ -2,37 +2,19 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 16.233852186014232,
-      "y": 4.176913142558679
+      "x": 16.1521166347176,
+      "y": 4.234725089168489
     },
-    "rotation": 0.0
+    "rotation": -1.7858847665219348
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "SHOOTCONVEYOR"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "SHOOTFLYS"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "Straight Red Source Path"
+            "pathName": "RRS Path"
           }
         }
       ]
