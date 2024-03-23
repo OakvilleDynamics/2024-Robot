@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.146419352667763,
-        "y": 5.578111669043852
+        "x": 15.319384055583853,
+        "y": 5.551187918118234
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.158113507110203,
-        "y": 5.589805823486293
+        "x": 15.377882604884993,
+        "y": 5.570687434551946
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 14.24596946059989,
-        "y": 6.209596008935608
+        "x": 13.615844906108418,
+        "y": 4.86096084893422
       },
       "prevControl": {
-        "x": 14.23427530615745,
-        "y": 6.221290163378046
+        "x": 13.63534442254213,
+        "y": 4.880460365367932
       },
       "nextControl": {
-        "x": 14.257663615042329,
-        "y": 6.19790185449317
+        "x": 13.596345389674706,
+        "y": 4.841461332500509
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 11.801891182129943,
-        "y": 6.326537553360007
+        "x": 9.180768844543056,
+        "y": 7.328155479208991
       },
       "prevControl": {
-        "x": 11.801891182129943,
-        "y": 6.338231707802448
+        "x": 8.376413791652427,
+        "y": 7.294031325449995
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,17 +48,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "shootConveyor",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    },
-    {
-      "name": "shootFlyWheel",
+      "name": "shoot",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -76,7 +66,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.965010163634727,
-      "y": 6.6773621866284305
+      "x": 15.319384055583853,
+      "y": 5.551187918118234
     },
-    "rotation": -57.5288077091511
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,13 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "shootConveyor"
+            "name": "SHOOTCONVEYOR"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "shootFlyWheel"
+            "name": "SHOOTFLYS"
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RLS Path"
+            "pathName": "RS Path"
           }
         }
       ]

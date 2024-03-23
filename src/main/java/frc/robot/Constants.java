@@ -44,8 +44,8 @@ public final class Constants {
 
     public static final class ElevatorConstants {
       // upy downy chain lift thing
-      public static final int IN = 10;
-      public static final int OUT = 11;
+      public static final int IN = 11;
+      public static final int OUT = 10;
     }
   }
 
@@ -77,7 +77,6 @@ public final class Constants {
     public static final boolean INTAKE_MOTOR_FRONT_INVERTED = false;
     public static final double INTAKE_MOTOR_SPEED_FRONT = 0.1;
     public static final double INTAKE_MOTOR_SPEED_SUSHI = 1;
-
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
     public static final int CONVEYOR_MOTOR_2 = 2;
@@ -90,9 +89,10 @@ public final class Constants {
     public static final int FLYWHEEL_MOTOR_2 = 4;
     public static final boolean FLYWHEEL_MOTOR_1_INVERTED = true;
     public static final boolean FLYWHEEL_MOTOR_2_INVERTED = false;
-    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 0.51;
+    public static final double FLYWHEEL_MOTOR_FULL_SPEED = 0.60;
     public static final double FLYWHEEL_MOTOR_REDUCED_SPEED = 0.20;
     public static final double FLYWHEEL_MOTOR_SPEED_SLOW = 0.15;
+    public static final double FLYWHEEL_MOTOR_SPEED_100 = 1;
   }
 
   public class VisionConstants {

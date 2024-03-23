@@ -3,57 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.836374464771723,
-        "y": 4.326837143702777
+        "x": 16.058563399178077,
+        "y": 4.198201444835939
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.848068619214162,
-        "y": 4.3385312981452175
+        "x": 16.11706194847921,
+        "y": 4.217700961269649
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 13.87175651844181,
-        "y": 2.2569718073909093
+        "x": 14.35496392119545,
+        "y": 2.1968539711727315
       },
       "prevControl": {
-        "x": 13.86006236399937,
-        "y": 2.268665961833347
+        "x": 14.374463437629162,
+        "y": 2.2163534876064426
       },
       "nextControl": {
-        "x": 13.88345067288425,
-        "y": 2.2452776529484715
+        "x": 14.335464404761737,
+        "y": 2.17735445473902
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 11.299042541105024,
-        "y": 1.6839582397113522
+        "x": 11.240571768892824,
+        "y": 0.7601200387585969
       },
       "prevControl": {
-        "x": 11.299042541105024,
-        "y": 1.6956523941537935
-      },
-      "nextControl": {
-        "x": 11.299042541105024,
-        "y": 1.6722640852689108
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 9.170706432580957,
-        "y": 0.8068966565283563
-      },
-      "prevControl": {
-        "x": 9.170706432580957,
-        "y": 0.8010495793071356
+        "x": 11.265813024784427,
+        "y": 0.7625494581674139
       },
       "nextControl": null,
       "isLocked": false,
@@ -64,17 +48,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "shootConveyor",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    },
-    {
-      "name": "shootFlyWheel",
+      "name": "shoot",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -92,7 +66,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
