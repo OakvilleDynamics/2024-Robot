@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 16.1521166347176,
-      "y": 7.390705607622041
+      "x": 1.3674277229789629,
+      "y": 5.557362183607978
     },
     "rotation": 0
   },
@@ -12,27 +12,15 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "rr Path"
+            "name": "SHOOTCONVEYOR"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "shootConveyor"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shootFlyWheel"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "dumpBed"
+            "name": "SHOOTFLYS"
           }
         },
         {
@@ -44,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "rr2 Path"
+            "pathName": "BS Path"
           }
         }
       ]
