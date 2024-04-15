@@ -27,4 +27,4 @@ jobs:
       # Runs an action from the Gradle org to validate the Gradle wrapper, see 
       # https://github.com/gradle/wrapper-validation-action?tab=readme-ov-file#the-gradle-wrapper-problem-in-open-source
       # for more details as to why this is important.
-      - uses: gradle/wrapper-validation-action@v2
+      - uses: gradle/wrapper-validation-action@v3
