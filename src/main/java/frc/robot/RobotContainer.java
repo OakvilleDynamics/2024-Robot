@@ -5,7 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -26,15 +26,20 @@ import frc.robot.commands.DumpControl;
 import frc.robot.commands.ElevatorControl;
 import frc.robot.commands.FlyWCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.auto.SHOOTCONVEYOR;
+import frc.robot.commands.auto.SHOOTFLYS;
+import frc.robot.commands.autoCommands.dumpBed;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Dump;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
+import org.photonvision.PhotonCamera;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -64,6 +69,14 @@ public class RobotContainer {
 
   private final LoggedDashboardChooser<Command> autoChooser;
 
+  private final Vision vision = new Vision();
+  private final PhotonCamera limeLight = vision.getLimelight();
+  private final PhotonCamera intakeCamera = vision.getIntakeCamera();
+  private final PhotonCamera conveyorCamera = vision.getConveyorCamera();
+
+  private final SHOOTCONVEYOR shootconveyorcmd = new SHOOTCONVEYOR(conveyor);
+  private final SHOOTFLYS shootflyscmd = new SHOOTFLYS(FlyWheel);
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
@@ -72,7 +85,15 @@ public class RobotContainer {
     conveyor.setDefaultCommand(new ConveyorCommand(conveyor));
     FlyWheel.setDefaultCommand(new FlyWCommand(FlyWheel));
     elevator.setDefaultCommand(new ElevatorControl(elevator));
-
+    // Register Named Commands
+    NamedCommands.registerCommand(
+        "shootConveyor", new InstantCommand(() -> conveyor.intakeConveyor()));
+    NamedCommands.registerCommand(
+        "shootFlyWheel", new InstantCommand(() -> FlyWheel.enableflywheelfull()));
+    NamedCommands.registerCommand("dump", new InstantCommand(() -> dump.open()));
+    NamedCommands.registerCommand("Dump bed", new dumpBed(dump));
+    NamedCommands.registerCommand("SHOOTCONVEYOR", shootconveyorcmd);
+    NamedCommands.registerCommand("SHOOTFLYS", shootflyscmd);
     // Configure the trigger bindings
     configureBindings();
 
@@ -80,10 +101,6 @@ public class RobotContainer {
         new LoggedDashboardChooser<>("Autonomous Chooser", AutoBuilder.buildAutoChooser());
 
     autoChooser.addDefaultOption("Do nothing", null);
-    autoChooser.addOption("BL", new PathPlannerAuto("BL Path"));
-    autoChooser.addOption("BR", new PathPlannerAuto("BR Path"));
-    autoChooser.addOption("RL", new PathPlannerAuto("RR Path"));
-    autoChooser.addOption("RR", new PathPlannerAuto("RR Path"));
 
     final AbsoluteDriveAdv closedAbsoluteDriveAdv =
         new AbsoluteDriveAdv(
@@ -185,15 +202,15 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
     new JoystickButton(driverXbox, 1).onTrue((new InstantCommand(drivebase::zeroGyro)));
-    new JoystickButton(driverXbox, 3).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
+    new JoystickButton(driverXbox, 3)
+        .whileTrue(Commands.deferredProxy(() -> drivebase.aimAtTarget(limeLight)));
     new JoystickButton(driverXbox, 2)
         .whileTrue(
             Commands.deferredProxy(
                 () ->
                     drivebase.driveToPose(
                         new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))));
-    //    new JoystickButton(driverXbox, 3).whileTrue(new RepeatCommand(new
-    // InstantCommand(drivebase::lock, drivebase)));
+    new JoystickButton(driverXbox, 4).whileTrue(new InstantCommand(drivebase::lock, drivebase));
   }
 
   /**
