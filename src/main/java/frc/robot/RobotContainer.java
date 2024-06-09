@@ -63,11 +63,11 @@ public class RobotContainer {
 
   // Deadband utility function
   public static double applyDeadband(double value, double deadband) {
-      if (Math.abs(value) > deadband) {
-          return (value - Math.signum(value) * deadband) / (1.0 - deadband);
-      } else {
-          return 0.0;
-      }
+    if (Math.abs(value) > deadband) {
+      return (value - Math.signum(value) * deadband) / (1.0 - deadband);
+    } else {
+      return 0.0;
+    }
   }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */

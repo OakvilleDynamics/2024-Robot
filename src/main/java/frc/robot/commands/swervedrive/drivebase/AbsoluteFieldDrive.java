@@ -1,34 +1,26 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.commands.swervedrive.drivebase;
 
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
+import frc.robot.util.swerve.SwerveController;
+import frc.robot.util.swerve.SwerveMath;
 import java.util.List;
 import java.util.function.DoubleSupplier;
-import swervelib.SwerveController;
-import swervelib.math.SwerveMath;
 
-/** An example command that uses an example subsystem. */
-public class AbsoluteFieldDrive extends Command {
-
+public class AbsoluteFieldDrive extends CommandBase {
   private final SwerveSubsystem swerve;
-  private final DoubleSupplier vX, vY, heading;
+  private final DoubleSupplier vX;
+  private final DoubleSupplier vY;
+  private final DoubleSupplier heading;
 
   /**
-   * Used to drive a swerve robot in full field-centric mode. vX and vY supply translation inputs,
-   * where x is torwards/away from alliance wall and y is left/right. headingHorzontal and
-   * headingVertical are the Cartesian coordinates from which the robot's angle will be derived-
-   * they will be converted to a polar angle, which the robot will rotate to.
+   * Absolute drive based on field orientation.
    *
-   * @param swerve The swerve drivebase subsystem.
+   * @param swerve The swerve subsystem
    * @param vX DoubleSupplier that supplies the x-translation joystick input. Should be in the range
    *     -1 to 1 with deadband already accounted for. Positive X is away from the alliance wall.
    * @param vY DoubleSupplier that supplies the y-translation joystick input. Should be in the range
@@ -39,8 +31,8 @@ public class AbsoluteFieldDrive extends Command {
   public AbsoluteFieldDrive(
       SwerveSubsystem swerve, DoubleSupplier vX, DoubleSupplier vY, DoubleSupplier heading) {
     this.swerve = swerve;
-    this.vX = vX;
-    this.vY = vY;
+    this.vX = () -> applyDeadband(vX.getAsDouble(), 0.05);  // Applying deadband
+    this.vY = () -> applyDeadband(vY.getAsDouble(), 0.05);  // Applying deadband
     this.heading = heading;
 
     addRequirements(swerve);
@@ -54,7 +46,6 @@ public class AbsoluteFieldDrive extends Command {
   public void execute() {
 
     // Get the desired chassis speeds based on a 2 joystick module.
-
     ChassisSpeeds desiredSpeeds =
         swerve.getTargetSpeeds(
             vX.getAsDouble(), vY.getAsDouble(), new Rotation2d(heading.getAsDouble() * Math.PI));
@@ -85,5 +76,14 @@ public class AbsoluteFieldDrive extends Command {
   @Override
   public boolean isFinished() {
     return false;
+  }
+
+  // Deadband utility function
+  public static double applyDeadband(double value, double deadband) {
+    if (Math.abs(value) > deadband) {
+      return (value - Math.signum(value) * deadband) / (1.0 - deadband);
+    } else {
+      return 0.0;
+    }
   }
 }
