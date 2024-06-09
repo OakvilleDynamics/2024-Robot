@@ -125,6 +125,7 @@ public final class Constants {
       public static final double PITCH = Units.degreesToRadians(90.0); // degrees to radians
       public static final double YAW = Units.degreesToRadians(180.0); // degrees to radians
     }
+
     public static final int FLYWHEEL_MOTOR_SPEED_ONEHUNDRED = 1;
   }
 }
