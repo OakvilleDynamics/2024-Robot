@@ -62,8 +62,8 @@ public final class Constants {
     // TODO: Add button binds for driver controllers
 
     // Joystick Deadband
-    public static final double LEFT_X_DEADBAND = 0.1;
-    public static final double LEFT_Y_DEADBAND = 0.1;
+    public static final double LEFT_X_DEADBAND = 0.2;
+    public static final double LEFT_Y_DEADBAND = 0.2;
     public static final double RIGHT_X_DEADBAND = 0.5;
     public static final double RIGHT_Y_DEADBAND = 0.5;
     public static final double TURN_CONSTANT = 6;
@@ -76,7 +76,7 @@ public final class Constants {
     public static final int INTAKE_MOTOR_FRONT = 52;
     public static final boolean INTAKE_MOTOR_SUSHI_INVERTED = true;
     public static final boolean INTAKE_MOTOR_FRONT_INVERTED = false;
-    public static final double INTAKE_MOTOR_SPEED_FRONT = 0.4;
+    public static final double INTAKE_MOTOR_SPEED_FRONT = 0.5;
     public static final double INTAKE_MOTOR_SPEED_SUSHI = 1;
     // Conveyor Motors
     public static final int CONVEYOR_MOTOR_1 = 1;
