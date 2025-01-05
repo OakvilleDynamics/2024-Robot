@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3674277229789629,
-      "y": 5.557362183607978
+      "x": 2.0,
+      "y": 7.0
     },
     "rotation": 0
   },
@@ -11,6 +11,18 @@
     "type": "sequential",
     "data": {
       "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "D Amp to Speaker Score"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
+          }
+        },
         {
           "type": "named",
           "data": {
@@ -24,15 +36,9 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "BS Path"
+            "pathName": "D Leave Zone"
           }
         }
       ]
